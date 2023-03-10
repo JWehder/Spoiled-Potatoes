@@ -6,12 +6,10 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
-    def show
-
     private
 
     def render_record_invalid_response(invalid)
-        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 
     def user_params
