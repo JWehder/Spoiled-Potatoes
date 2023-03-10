@@ -6,6 +6,17 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def forgot_password
+        user = User.find_by(email: params[:email])
+        if user && user.reset_password_sent_at > 2.hours.ago
+            PasswordResetMailer.password_reset(user)
+            render json: { message: "Email sent" }, status: :ok 
+        else
+            render json: { errors: "Email not found" }, status: :not_found
+        end
+    end
+
+
     private
 
     def render_record_invalid_response(invalid)
