@@ -1,6 +1,6 @@
 import React from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
+import StyledForm from "../styles/StyledForm";
 
 function SignupForm() {
     return (
@@ -10,11 +10,22 @@ function SignupForm() {
             label="Email address"
             className="mb-3"
             >
-            <Form.Control type="email" placeholder="name@example.com" />
+            <StyledForm.Control type="email" placeholder="name@example.com" />
             </FloatingLabel>
             <FloatingLabel controlId="floatingPassword" label="Password">
-            <Form.Control type="password" placeholder="Password" />
+            <StyledForm.Control type="password" placeholder="Password" />
             </FloatingLabel>
+            <FloatingLabel
+            controlId="floatingInput"
+            label="Username"
+            className="mb-3"
+            >
+            <StyledForm.Control type="text" placeholder="name@example.com" />
+            </FloatingLabel>
+            <FloatingLabel controlId="floatingPassword" label="Password">
+            <StyledForm.Control type="password" placeholder="Password" />
+            </FloatingLabel>
+
         </>
     )
 }
