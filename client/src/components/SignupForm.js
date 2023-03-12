@@ -2,7 +2,7 @@ import React from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
-function LoginForm() {
+function SignupForm() {
     return (
         <>
             <FloatingLabel
@@ -19,4 +19,4 @@ function LoginForm() {
     )
 }
 
-export default LoginForm;
+export default SignupForm;
