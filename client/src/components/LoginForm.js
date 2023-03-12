@@ -7,10 +7,10 @@ function LoginForm() {
         <>
             <FloatingLabel
             controlId="floatingInput"
-            label="Email address"
+            label="Username"
             className="mb-3"
             >
-            <StyledForm.Control type="email" placeholder="name@example.com" />
+            <StyledForm.Control type="text" placeholder="name@example.com" />
             </FloatingLabel>
             <FloatingLabel controlId="floatingPassword" label="Password">
             <StyledForm.Control type="password" placeholder="Password" />
