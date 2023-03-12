@@ -4,15 +4,30 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 
 function SignupForm() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const [email, setEmail] = useState("")
-    const [bio, setBio] = useState("");
-    const[favoriteMovie, setFavoriteMovie] = ("")
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [userObject, setUserObject] = useState({
+        username: "",
+        password: "",
+        password_confirmation: "",
+        email: "",
+        bio: "",
+        favoriteMovie: ""
+    })
+
+
+
+    function handleSubmit() {
+        
+    }
+
+    function changeUserValue(e) {
+        setUserObject({
+            ...userObject,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return (
         <>  
@@ -25,51 +40,60 @@ function SignupForm() {
                 <StyledForm.Control 
                 type="text" 
                 placeholder="Username" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="username"
+                value={userObject.username}
+                onChange={(e) => changeUserValue(e)}
                 />
                 </FloatingLabel>
                 <FloatingLabel controlId="floatingPassword" label="Password">
                 <StyledForm.Control 
                 type="password" 
+                name="password"
                 placeholder="Password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={userObject.password}
+                onChange={(e) => changeUserValue(e)}
                 />
                 </ FloatingLabel>
                 <FloatingLabel controlId="floatingPassword" label="Password Confirmation">
                 <StyledForm.Control 
                 type="password" 
-                placeholder="Password Confirmation" 
-                value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                name="password_confirmation"
+                value={userObject.password_confirmation}
+                onChange={(e) => setUserObject(e)}
                 />
                 </FloatingLabel>
                 <FloatingLabel
                 controlId="floatingInput"
                 label="Email address"
                 className="mb-3"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 >
-                <StyledForm.Control type="email" placeholder="name@example.com" />
+                <StyledForm.Control
+                type="email" 
+                name="email"
+                value={userObject.email}
+                onChange={(e) => changeUserValue(e)}
+                />
                 </FloatingLabel>  
                 <FloatingLabel
                 controlId="floatingInput"
                 label="Favorite Movie"
                 className="mb-3"
-                value={favoriteMovie}
-                onChange={(e) => setFavoriteMovie(e.target.value)}
                 >
-                <StyledForm.Control type="text" placeholder="Favorite Movie" />
+                <StyledForm.Control 
+                type="text" 
+                name="favorite_movie"
+                value={userObject.favorite_movie}
+                onChange={(e) => changeUserValue(e)}
+                />
                 </FloatingLabel>
                 <StyledForm.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <StyledForm.Label>Example textarea</StyledForm.Label>
+                <StyledForm.Label>Bio</StyledForm.Label>
                 <StyledForm.Control 
                 as="textarea" 
                 rows={3} 
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                name="favorite_movie"
+                value={userObject.bio}
+                onChange={(e) => changeUserValue(e)}
                 />
                 </StyledForm.Group>
                 <CustomButton variant= "primary" type="submit" />
