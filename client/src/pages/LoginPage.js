@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import CustomButton from "../styles/Button";
 import SignupForm from "../components/SignupForm";
+import Nav from 'react-bootstrap/Nav';
 
 function LoginPage() {
     const [showLogin, setShowLogin] = useState(true)
@@ -27,6 +28,7 @@ function LoginPage() {
                 </>
             
             )}
+            <Nav.Link href="/forgot_password">Forgot pasword?</Nav.Link>
         </Wrapper>
     )
 }

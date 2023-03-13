@@ -18,7 +18,20 @@ function SignupForm() {
 
 
 
-    function handleSubmit() {
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        fetch("/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify(userObject)
+        }).then((r) => {
+            if(r.ok) {
+                r.json().then()
+            }
+        })
         
     }
 
