@@ -1,9 +1,12 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
+import { UserContext } from "../context/User";
 
 function SignupForm() {
+    const { setUser } = useContext(UserContext)
+
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -16,8 +19,6 @@ function SignupForm() {
         favoriteMovie: ""
     })
 
-
-
     function handleSubmit(e) {
         e.preventDefault()
 
@@ -29,10 +30,11 @@ function SignupForm() {
             body:JSON.stringify(userObject)
         }).then((r) => {
             if(r.ok) {
-                r.json().then()
+                r.json().then((user) => setUser(user))
+            } else {
+                r.json().then((err) => setErrors(err.errors))
             }
         })
-        
     }
 
     function changeUserValue(e) {
