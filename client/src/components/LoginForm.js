@@ -3,6 +3,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserProvider } from "../context/User";
+import Alert from 'react-bootstrap/Alert';
 
 function LoginForm() {
     const { setUser } = useContext(UserProvider)
@@ -11,6 +12,7 @@ function LoginForm() {
         username: "",
         password: ""
     })
+    const [showErrors, setShowErrors] = useState(false)
     const [errors, setErrors] = useState([])
 
     function onChange(e) {
@@ -31,6 +33,7 @@ function LoginForm() {
             if (r.ok) {
                 r.json().then((user) => setUser(user))
             } else {
+                setShowErrors(true)
                 r.json.then((err) => setErrors(err.errors))
             }
         })
@@ -39,6 +42,15 @@ function LoginForm() {
     return (
         <>
             <StyledForm onSubmit={handleSubmit}>
+                {showErrors ?
+                errors.forEach((error) => {
+                    <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
+                        {error}
+                    </Alert>
+                })
+                :
+                ""
+                }
                 <FloatingLabel
                 controlId="floatingInput"
                 label="Username"
