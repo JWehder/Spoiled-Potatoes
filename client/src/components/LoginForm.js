@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
-import { UserProvider } from "../context/User";
 import Alert from 'react-bootstrap/Alert';
+import { UserContext } from "../context/User";
 
 function LoginForm() {
-    const { setUser } = useContext(UserProvider)
+    const { setUser } = useContext(UserContext);
 
     const [loginUser, setLoginUser] = useState({
         username: "",
@@ -40,11 +40,10 @@ function LoginForm() {
     }
 
     return (
-        <>
             <StyledForm onSubmit={handleSubmit}>
                 {showErrors ?
-                errors.forEach((error) => {
-                    <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
+                errors.map((error) => {
+                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
                         {error}
                     </Alert>
                 })
@@ -59,7 +58,7 @@ function LoginForm() {
                 <StyledForm.Control 
                 type="text" 
                 placeholder="Username" 
-                value= {loginUser}
+                value= {loginUser.username}
                 onChange={(e) => onChange(e)}
                 />
                 </FloatingLabel>
@@ -70,9 +69,8 @@ function LoginForm() {
                 onChange={(e) => onChange(e)}
                 />
                 </FloatingLabel>
-                <CustomButton variant="primary" type="submit" />
+                <CustomButton variant="primary" type="submit">Login</CustomButton>
             </StyledForm>
-        </>
     )
 }
 

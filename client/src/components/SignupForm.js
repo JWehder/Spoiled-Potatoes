@@ -3,12 +3,14 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserContext } from "../context/User";
+import { Alert } from "bootstrap";
 
 function SignupForm() {
     const { setUser } = useContext(UserContext)
 
     const [errors, setErrors] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
+    const [showErrors, setShowErrors] = useState(false)
 
     const [userObject, setUserObject] = useState({
         username: "",
@@ -47,6 +49,15 @@ function SignupForm() {
     return (
         <>  
             <StyledForm onSubmit={handleSubmit}>
+                {showErrors ?
+                errors.map((error) => {
+                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
+                        {error}
+                    </Alert>
+                })
+                :
+                ""
+                }
                 <FloatingLabel
                 controlId="floatingInput"
                 label="Username"
@@ -111,7 +122,7 @@ function SignupForm() {
                 onChange={(e) => changeUserValue(e)}
                 />
                 </StyledForm.Group>
-                <CustomButton variant= "primary" type="submit" />
+                <CustomButton variant= "primary" type="submit">Sign Up</CustomButton>
             </StyledForm>
         </>
     )

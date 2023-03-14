@@ -1,9 +1,10 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import CustomButton from "../styles/Button";
 import SignupForm from "../components/SignupForm";
 import Nav from 'react-bootstrap/Nav';
+import { Button } from "react-bootstrap";
 
 function LoginPage() {
     const [showLogin, setShowLogin] = useState(true)
@@ -15,7 +16,7 @@ function LoginPage() {
                 <LoginForm />
                 <hr></hr>
                 <p>Don't have an account?</p>
-                <CustomButton variant= "secondary" onClick={() => setShowLogin(false)} />
+                <CustomButton variant= "secondary" onClick={() => setShowLogin(false)}>Sign Up</CustomButton>
                 </>
             )
                 :
@@ -28,15 +29,15 @@ function LoginPage() {
                 </>
             
             )}
-            <Nav.Link href="/forgot_password">Forgot pasword?</Nav.Link>
+            <Button variant="link">Forgot password?</Button>
         </Wrapper>
     )
 }
-
-export default LoginPage;
 
 const Wrapper = styled.section`
     max-width: 500px;
     margin: 40px auto;
     padding: 16px;
 `
+
+export default LoginPage;

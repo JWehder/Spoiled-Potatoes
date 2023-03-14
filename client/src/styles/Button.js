@@ -1,5 +1,6 @@
+import React from "react";
 import styled from "styled-components"
-import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 
 const COLORS = {
     primary: {
@@ -12,20 +13,21 @@ const COLORS = {
     }
 }
 
-function CustomButton({ variant = "full", color = "primary", ...props }) {
+function CustomButton({ variant = "primary", color = "primary", ...props }) {
     let Component;
-    if (variant === "full") {
+    if (variant === "primary") {
       Component = PrimaryButton;
-    } else if (variant === "outline") {
+    } else if (variant === "secondary") {
       Component = SecondaryButton;
     }
   
     return <Component style={COLORS[color]} {...props} />;
-  }
+}
 
 const ButtonBase = styled(Button)`
     border: 1px solid transparent;
     padding: 8px 16px;
+    margin: 8px;
 `;
 
 const PrimaryButton = styled(ButtonBase)`
