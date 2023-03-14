@@ -59,28 +59,31 @@ function SignupForm() {
                 ""
                 }
                 <FloatingLabel
-                controlId="floatingInput"
                 label="Username"
                 className="mb-3"
                 >
                 <StyledForm.Control 
                 type="text" 
-                placeholder="Username" 
                 name="username"
                 value={userObject.username}
                 onChange={(e) => changeUserValue(e)}
                 />
                 </FloatingLabel>
-                <FloatingLabel controlId="floatingPassword" label="Password">
+                <FloatingLabel 
+                label="Password" 
+                className="mb-3"
+                >
                 <StyledForm.Control 
                 type="password" 
                 name="password"
-                placeholder="Password" 
                 value={userObject.password}
                 onChange={(e) => changeUserValue(e)}
                 />
                 </ FloatingLabel>
-                <FloatingLabel controlId="floatingPassword" label="Password Confirmation">
+                <FloatingLabel 
+                label="Password Confirmation" 
+                className="mb-3"
+                >
                 <StyledForm.Control 
                 type="password" 
                 name="password_confirmation"
@@ -112,16 +115,19 @@ function SignupForm() {
                 onChange={(e) => changeUserValue(e)}
                 />
                 </FloatingLabel>
-                <StyledForm.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <StyledForm.Label>Bio</StyledForm.Label>
+                <FloatingLabel 
+                controlId="floatingTextarea2" 
+                label="Bio" 
+                className="mb-3"
+                >
                 <StyledForm.Control 
                 as="textarea" 
-                rows={3} 
-                name="favorite_movie"
+                name="bio"
+                style={{ height: '100px' }}
                 value={userObject.bio}
                 onChange={(e) => changeUserValue(e)}
                 />
-                </StyledForm.Group>
+                </FloatingLabel>
                 <CustomButton variant= "primary" type="submit">Sign Up</CustomButton>
             </StyledForm>
         </>
