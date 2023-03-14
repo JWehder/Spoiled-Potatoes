@@ -4,12 +4,12 @@ import { Button } from 'react-bootstrap';
 
 const COLORS = {
     primary: {
-        "--main": "#E92EFB",
+        "--main": "#04005E",
         "--accent": "white"
     },
     secondary: {
         "--main": "f0f8ff",
-        "--accent": "010203"
+        "--accent": "04005E"
     }
 }
 
@@ -26,8 +26,8 @@ function CustomButton({ variant = "primary", color = "primary", ...props }) {
 
 const ButtonBase = styled(Button)`
     border: 1px solid transparent;
-    padding: 8px 16px;
-    margin: 8px;
+    padding: 7px 14px;
+    margin: 8px 0px;
 `;
 
 const PrimaryButton = styled(ButtonBase)`
@@ -45,7 +45,7 @@ const SecondaryButton = styled(ButtonBase)`
     border: 2px solid var(--main);
 
     &:hover {
-    background: hsl(235deg 85% 97%);
+    opacity: 0.9;
     }
 `
 

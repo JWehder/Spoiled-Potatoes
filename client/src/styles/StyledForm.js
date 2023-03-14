@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import Form from 'react-bootstrap/Form';
 
 const StyledForm = styled(Form)`
+    color: #FF2079;
     &:focus-within {
-        color: #E92EFB;
+        color: #FF2079;
     }
 `
 
