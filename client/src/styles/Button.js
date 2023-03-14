@@ -8,7 +8,7 @@ const COLORS = {
         "--accent": "white"
     },
     secondary: {
-        "--main": "f0f8ff",
+        "--main": "#F0FFFF",
         "--accent": "04005E"
     }
 }
@@ -19,7 +19,7 @@ function CustomButton({ variant = "primary", color = "primary", ...props }) {
       Component = PrimaryButton;
     } else if (variant === "secondary") {
       Component = SecondaryButton;
-    }
+    } 
   
     return <Component style={COLORS[color]} {...props} />;
 }
