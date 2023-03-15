@@ -67,6 +67,7 @@ function LoginForm() {
                 <StyledForm.Control 
                 type="password" 
                 placeholder="Password" 
+                name="password"
                 onChange={(e) => onChange(e)}
                 />
                 </FloatingLabel>
