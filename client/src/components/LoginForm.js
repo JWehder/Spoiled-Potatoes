@@ -4,6 +4,7 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import Alert from 'react-bootstrap/Alert';
 import { UserContext } from "../context/User";
+import { Button } from "react-bootstrap";
 
 function LoginForm() {
     const { setUser } = useContext(UserContext);
@@ -69,7 +70,6 @@ function LoginForm() {
                 onChange={(e) => onChange(e)}
                 />
                 </FloatingLabel>
-                <CustomButton variant="primary" type="submit">Login</CustomButton>
             </StyledForm>
     )
 }

@@ -88,7 +88,7 @@ function SignupForm() {
                 type="password" 
                 name="password_confirmation"
                 value={userObject.password_confirmation}
-                onChange={(e) => setUserObject(e)}
+                onChange={(e) => changeUserValue(e)}
                 />
                 </FloatingLabel>
                 <FloatingLabel

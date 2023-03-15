@@ -7,7 +7,6 @@ function App() {
   return (
       <div className="App">
         <UserProvider>
-          <button>Click me!</button>
           <Switch>
             <Route path="/page">
               <LoginPage />

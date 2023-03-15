@@ -14,22 +14,27 @@ function LoginPage() {
             {showLogin ? (
                 <>
                 <LoginForm />
-                <hr></hr>
+                <ButtonContainer>
+                <CustomButton variant="primary" type="submit">Login</CustomButton>
+                <Button variant="link">Forgot password?</Button>
+                </ButtonContainer>
+                <hr />
+                <ButtonContainer>
                 <p>Don't have an account?</p>
                 <CustomButton variant= "secondary" onClick={() => setShowLogin(false)}>Sign Up</CustomButton>
+                </ButtonContainer>
                 </>
             )
                 :
             (
                 <>
                 <SignupForm />
-                <hr></hr>
+                <hr />
                 <p>Already have an account?</p>
-                <CustomButton variant="secondary" onClick={() => setShowLogin(true)} />
+                <CustomButton variant="secondary" onClick={() => setShowLogin(true)}>Sign In</CustomButton>
                 </>
             
             )}
-            <Button variant="link">Forgot password?</Button>
         </Wrapper>
     )
 }
@@ -41,6 +46,11 @@ const Wrapper = styled.section`
     background-color: #F5F5F5;
     border: 1px;
     border-radius: 10px;
+`
+
+const ButtonContainer = styled.div`
+    text-align: center;
+    display: inline-block;
 `
 
 export default LoginPage;

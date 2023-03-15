@@ -28,6 +28,7 @@ const ButtonBase = styled(Button)`
     border: 1px solid transparent;
     padding: 7px 14px;
     margin: 8px 0px;
+    text-align: center;
 `;
 
 const PrimaryButton = styled(ButtonBase)`
