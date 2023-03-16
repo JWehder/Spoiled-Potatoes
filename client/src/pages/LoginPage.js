@@ -15,7 +15,6 @@ function LoginPage() {
                 <>
                 <LoginForm />
                 <ButtonContainer>
-                <CustomButton variant="primary" type="submit">Login</CustomButton>
                 <Button variant="link">Forgot password?</Button>
                 </ButtonContainer>
                 <hr />

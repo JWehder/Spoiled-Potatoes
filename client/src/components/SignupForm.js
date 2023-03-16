@@ -3,7 +3,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserContext } from "../context/User";
-import { Alert } from "bootstrap";
+import Alert from "react-bootstrap/Alert";
 
 function SignupForm() {
     const { setUser } = useContext(UserContext)
@@ -34,7 +34,10 @@ function SignupForm() {
             if(r.ok) {
                 r.json().then((user) => setUser(user))
             } else {
-                r.json().then((err) => setErrors(err.errors))
+                r.json().then((err) => {
+                    setShowErrors(true)
+                    setErrors(err.errors)
+                })
             }
         })
     }
@@ -50,11 +53,11 @@ function SignupForm() {
         <>  
             <StyledForm onSubmit={handleSubmit}>
                 {showErrors ?
-                errors.map((error) => {
-                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
+                errors.map((error) => (
+                    <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
                         {error}
                     </Alert>
-                })
+                ))
                 :
                 ""
                 }

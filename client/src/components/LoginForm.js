@@ -23,7 +23,9 @@ function LoginForm() {
         })
     }
 
-    function handleSubmit() {
+    function handleSubmit(e) {
+        e.preventDefault()
+
         fetch('/login', {
             method: "POST",
             headers: {
@@ -35,7 +37,7 @@ function LoginForm() {
                 r.json().then((user) => setUser(user))
             } else {
                 setShowErrors(true)
-                r.json.then((err) => setErrors(err.errors))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -44,7 +46,7 @@ function LoginForm() {
             <StyledForm onSubmit={handleSubmit}>
                 {showErrors ?
                 errors.map((error) => {
-                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
+                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable="true">
                         {error}
                     </Alert>
                 })
@@ -60,6 +62,7 @@ function LoginForm() {
                 type="text" 
                 placeholder="Username" 
                 value= {loginUser.username}
+                name="username"
                 onChange={(e) => onChange(e)}
                 />
                 </FloatingLabel>
@@ -68,9 +71,11 @@ function LoginForm() {
                 type="password" 
                 placeholder="Password" 
                 name="password"
+                value={loginUser.passwowrd}
                 onChange={(e) => onChange(e)}
                 />
                 </FloatingLabel>
+                <CustomButton variant="primary" type="submit">Login</CustomButton>
             </StyledForm>
     )
 }
