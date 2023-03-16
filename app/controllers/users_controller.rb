@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     def forgot_password
         user = User.find_by(email: params[:email])
-        if user && user.reset_password_sent_at > 2.hours.ago
+        if user 
             PasswordResetMailer.password_reset(user)
             render json: { message: "Email sent" }, status: :ok 
         else
@@ -16,6 +16,14 @@ class UsersController < ApplicationController
         end
     end
 
+    def reset_password
+        user = User.find_by(code: params[:code])
+        if user
+            render json: { message: "authenticated" }, status: :ok
+        else
+            render json: { errors: "incorrect code" }, status: :unauthorized
+        end
+    end
 
     private
 
