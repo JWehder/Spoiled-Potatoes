@@ -18,7 +18,7 @@ function SignupForm() {
         password_confirmation: "",
         email: "",
         bio: "",
-        favoriteMovie: ""
+        favorite_movie: ""
     })
 
     function handleSubmit(e) {
@@ -35,8 +35,9 @@ function SignupForm() {
                 r.json().then((user) => setUser(user))
             } else {
                 r.json().then((err) => {
-                    setShowErrors(true)
-                    setErrors(err.errors)
+                    // setShowErrors(true)
+                    // setErrors(err.errors)
+                    console.log(err.errors)
                 })
             }
         })

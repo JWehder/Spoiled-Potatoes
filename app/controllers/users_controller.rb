@@ -32,11 +32,11 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
+        params.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :bio, :favorite_movie)
     end
 
     def render_unprocessable_entity(invalid)
-        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
 
 end
