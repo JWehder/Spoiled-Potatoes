@@ -5,6 +5,7 @@ import CustomButton from "../styles/Button";
 import SignupForm from "../components/SignupForm";
 import Nav from 'react-bootstrap/Nav';
 import { Button } from "react-bootstrap";
+import Wrapper from "../styles/Wrapper";
 
 function LoginPage() {
     const [showLogin, setShowLogin] = useState(true)
@@ -37,15 +38,6 @@ function LoginPage() {
         </Wrapper>
     )
 }
-
-const Wrapper = styled.section`
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 16px;
-    background-color: #F5F5F5;
-    border: 1px;
-    border-radius: 10px;
-`
 
 const ButtonContainer = styled.div`
     text-align: center;
