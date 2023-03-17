@@ -23,14 +23,9 @@ function ResetPasswordPage() {
             {RenderForm()}
             <hr />
             <p>Remember Password?</p>
-            <CustomButton variant="link" href="/login" variant="primary" />
+            <CustomButton variant="link" href="/login" />
         </Wrapper>
     )
 }
 
-const LoginHeader = styled.section`
-    background-color: #F5F5F5;
-    border: 1px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
-`
+export default ResetPasswordPage;
