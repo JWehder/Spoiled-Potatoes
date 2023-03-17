@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         if user
             render json: { message: "authenticated" }, status: :ok
         else
-            render json: { errors: "incorrect code" }, status: :unauthorized
+            render json: { errors: "could not find a user with that code" }, status: :unauthorized
         end
     end
 

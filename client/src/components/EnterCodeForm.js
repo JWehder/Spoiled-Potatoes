@@ -1,9 +1,27 @@
 import React, { useState } from "react";
 import StyledForm from "../styles/StyledForm";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { Alert } from "react-bootstrap";
 
 function EnterCodeForm() {
     const [code, setCode] = useState(null)
+    const [showError, setShowError] = useState(false)
+
+    function handleSubmit() {
+        fetch('/reset_password', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(code)
+        }).then((r) => {
+            if(r.ok) {
+                <Redirect to="/create_password" />
+            } else {
+                setShowError(true)
+            }
+        })
+    }
     
     return (
         <>
@@ -22,7 +40,9 @@ function EnterCodeForm() {
                     onChange={(e) => setCode(e.target.value)}
                     />
                 </FloatingLabel>
+                <CustomButton variant="primary" type="submit">Submit</CustomButton>
             </StyledForm>
+            { showError ? <Alert variant="danger" onClose={() => setShowError(false)}>Sorry, we do not recognize that code</Alert> : "" }
         </>
                 
     )

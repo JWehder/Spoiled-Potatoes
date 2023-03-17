@@ -46,7 +46,7 @@ function LoginForm() {
             <StyledForm onSubmit={handleSubmit}>
                 {showErrors ?
                 errors.map((error) => {
-                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable="true">
+                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
                         {error}
                     </Alert>
                 })
