@@ -6,6 +6,12 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def update
+        user = User.find_by(id: params[:id])
+        user.update!(user_params)
+        render json: user, status: :ok
+    end
+
     def forgot_password
         user = User.find_by(email: params[:email])
         if user 
@@ -19,7 +25,7 @@ class UsersController < ApplicationController
     def reset_password
         user = User.find_by(code: params[:code])
         if user
-            render json: user, status: :ok
+            render json: user.id, status: :ok
         else
             render json: { errors: "could not find a user with that code" }, status: :unauthorized
         end

@@ -4,8 +4,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Alert } from "react-bootstrap";
 import { UserContext } from "../context/User";
 
-function EnterCodeForm() {
-    const { setUser } = useContext(UserContext)
+function EnterCodeForm(props) {
+    const { setID } = useContext(UserContext)
 
     const [code, setCode] = useState(null)
     const [showError, setShowError] = useState(false)
@@ -19,8 +19,11 @@ function EnterCodeForm() {
             body: JSON.stringify(code)
         }).then((r) => {
             if(r.ok) {
-                r.json().then((user) => setUser(user))
-                return <Redirect to="/create_password" />
+                r.json().then((ID) => { 
+                    setID(ID)
+                    props.onNextStep();
+                    return <Redirect to="/create_password" />
+                })
             } else {
                 setShowError(true)
             }

@@ -3,7 +3,7 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { Alert } from "react-bootstrap";
 
-function ResetPasswordForm() {
+function ResetPasswordForm(props) {
     const [email, setEmail] = useState("")
     const [showAlert, setShowAlert] = useState(false)
     const [success, setSuccess] = useState(false)
@@ -24,6 +24,7 @@ function ResetPasswordForm() {
                     setSuccess(true)
                     setShowAlert(true)
                     setDisabled(true)
+                    props.onNextStep()
                 })
             } else {
                 setShowAlert(true)
