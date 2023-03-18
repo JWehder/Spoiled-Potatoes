@@ -3,7 +3,6 @@ import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import CustomButton from "../styles/Button";
 import SignupForm from "../components/SignupForm";
-import Nav from 'react-bootstrap/Nav';
 import { Button } from "react-bootstrap";
 import Wrapper from "../styles/Wrapper";
 
@@ -16,7 +15,7 @@ function LoginPage() {
                 <>
                 <LoginForm />
                 <ButtonContainer>
-                <Button variant="link">Forgot password?</Button>
+                <Button href="/forgot_password" variant="link">Forgot password?</Button>
                 </ButtonContainer>
                 <hr />
                 <ButtonContainer>

@@ -3,6 +3,8 @@ import StyledForm from "../styles/StyledForm";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Alert } from "react-bootstrap";
 import { UserContext } from "../context/User";
+import { Redirect } from "react-router-dom";
+import CustomButton from "../styles/Button";
 
 function EnterCodeForm(props) {
     const { setID } = useContext(UserContext)

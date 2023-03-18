@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Wrapper from "../styles/Wrapper";
-import CustomButton from "../styles/Button";
+import ResetPasswordForm from "../components/ResetPasswordForm";
+import EnterCodeForm from "../components/EnterCodeForm";
+import CreateNewPasswordForm from "../components/CreateNewPasswordForm";
+import Button from "react-bootstrap/ButtonGroup"
 
-function ResetPasswordPage() {
+function ForgotPasswordPage() {
     const [step, setStep] = useState(1);
 
     function RenderForm() {
@@ -23,9 +26,9 @@ function ResetPasswordPage() {
             {RenderForm()}
             <hr />
             <p>Remember Password?</p>
-            <CustomButton variant="link" href="/login" />
+            <Button variant="link" href="/login" />
         </Wrapper>
     )
 }
 
-export default ResetPasswordPage;
+export default ForgotPasswordPage;

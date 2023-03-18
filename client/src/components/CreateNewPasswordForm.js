@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
 import StyledForm from "../styles/StyledForm";
 import { UserContext } from "../context/User";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
+import { Alert } from "react-bootstrap";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import CustomButton from "../styles/Button";
 
 function CreateNewPasswordForm(props) {
-    const { ID, setUser } = useContext(UserContext)
+    const { ID, setUser, user } = useContext(UserContext)
     const [password, setPassword] = useState("")
     const [password_confirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -47,6 +51,15 @@ function CreateNewPasswordForm(props) {
 
     return (
         <>
+            {showErrors ?
+            errors.map((error) => {
+                return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
+                    {error}
+                </Alert>
+            })
+            :
+            ""
+            }
             <StyledForm onSubmit= {handleSubmit}>
                 <FloatingLabel 
                 label="Password" 

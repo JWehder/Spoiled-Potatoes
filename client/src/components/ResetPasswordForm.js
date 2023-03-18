@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { Alert } from "react-bootstrap";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 function ResetPasswordForm(props) {
     const [email, setEmail] = useState("")
@@ -37,11 +38,6 @@ function ResetPasswordForm(props) {
             <h2>Search for your account</h2>
             <hr />
             <StyledForm onSubmit={handleSubmit}>
-                <FloatingLabel
-                    controlId="floatingInput"
-                    label="Please enter the email associated with your account"
-                    className="mb-3"
-                >
                     <StyledForm.Control
                     type="email" 
                     name="email"
@@ -49,7 +45,6 @@ function ResetPasswordForm(props) {
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={disabled ? "true" : "false"}
                     />
-                </FloatingLabel>
                 <CustomButton variant= "primary" type="submit">Send Code</CustomButton>
                 {showAlert ? 
                 <Alert variant={success ? "success" : "danger"}>{success ? "Please check your email for your custom code." : "The email provided was not recognized."}</Alert> 

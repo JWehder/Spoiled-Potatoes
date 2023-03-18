@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom"
 import LoginPage from "../pages/LoginPage";
 import { UserProvider } from "../context/User";
-import ResetPasswordPage from "../pages/ForgotPasswordPage";
+import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
               <LoginPage />
             </Route>
             <Route exact path="/forgot_password">
-              <ResetPasswordPage />
+              <ForgotPasswordPage />
             </Route>
           </Switch>
         </UserProvider>
