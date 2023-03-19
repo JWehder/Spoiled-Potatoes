@@ -3,7 +3,7 @@ import Wrapper from "../styles/Wrapper";
 import ResetPasswordForm from "../components/ResetPasswordForm";
 import EnterCodeForm from "../components/EnterCodeForm";
 import CreateNewPasswordForm from "../components/CreateNewPasswordForm";
-import Button from "react-bootstrap/ButtonGroup"
+import Button from "react-bootstrap/Button"
 
 function ForgotPasswordPage() {
     const [step, setStep] = useState(1);
@@ -25,8 +25,7 @@ function ForgotPasswordPage() {
         <Wrapper>
             {RenderForm()}
             <hr />
-            <p>Remember Password?</p>
-            <Button variant="link" href="/login" />
+            <Button variant="link" href="/login">Remember Password?</Button>
         </Wrapper>
     )
 }
