@@ -113,11 +113,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.zoho.com',
-    port: 465,
+    port: 587,
     domain: 'zoho.com',
-    user_name: 'jake.wehder@zohomail.com',
+    Security Type: 'TLS',
+    user_name: 'jake.wehder@zoho.com',
     password: 'testingjake58',
     authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  config.action_mailer.default_url_options = { host: '<zoho>' }
 end
