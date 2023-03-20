@@ -12,7 +12,7 @@ class PasswordResetMailer < ApplicationMailer
         # update the column in the DB for the user's password reset
         code = SecureRandom.hex(6)
 
-        @user.update(password_reset_code: code)
+        @user.update(code: code)
         @user.update(request_time: Time.now.utc)
         code
     end
