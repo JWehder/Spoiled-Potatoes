@@ -131,10 +131,4 @@ movies = [
 
 ]
 
-t.string :title
-t.string :image_url
-t.integer :rating
-t.string :genre
-t.integer :run_time
-t.integer :overall_review
-t.datetime :release_date
+
