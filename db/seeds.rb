@@ -111,5 +111,12 @@ movies = [
         "poster": "https://m.media-amazon.com/images/M/MV5BMzFiYWQxYzgtOThmYi00ZmIwLWFlZWMtMzk2NTI2YTYzMjkyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
 
     }
-
 ]
+
+puts "seeding..."
+
+movies.each do |movie|
+    Movie.create(movie)
+end
+
+puts "Done seeding!"

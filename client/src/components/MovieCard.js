@@ -34,6 +34,7 @@ const MovieContainer = styled.div`
     width: 180px;
     height: 340px;
     border-radius: 10px;
+    margin: 20px;
 `
 const MoviePara = styled.p`
     font-size: 12px;
