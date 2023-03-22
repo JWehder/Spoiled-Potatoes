@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import NewsPane from "../components/NewsPane";
+import MovieContainer from "../styles/MovieContainer";
 
 function HomePage() {
 
@@ -19,7 +20,9 @@ function HomePage() {
     return (
         <div>
             <NewsPane />
-            {displayMovies}
+            <MovieContainer>
+                {displayMovies}
+            </MovieContainer>
         </div>
     )
 }
