@@ -7,7 +7,7 @@ import HomePage from "../pages/HomePage";
 
 function App() {
   return (
-      <div className="App">
+      <div className="App" style={{ backgroundColor: '#F5F5F5' }}>
         <UserProvider>
           <Switch>
             <Route exact path="/">

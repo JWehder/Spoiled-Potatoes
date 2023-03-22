@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import NewsPane from "../components/NewsPane";
 import MovieContainer from "../styles/MovieContainer";
+import CategoryTitleDiv from "../styles/CategoryTitleDiv";
+import CustomButton from "../styles/Button";
+import { Link } from "react-router-dom";
 
 function HomePage() {
 
@@ -18,8 +21,15 @@ function HomePage() {
     })
 
     return (
-        <div>
+        <div style={{ width: '900px', textAlign: 'center', margin: '0 auto', backgroundColor: '#FFFAFA' }}>
             <NewsPane />
+            <CategoryTitleDiv>
+            <h3 style={{ width: 'auto', marginRight: '10px' }}>POPULAR</h3>
+            <span style={{ display: 'flex', textAlign: 'right' }}>
+                <Link style={{ position: 'absolute', top: '0', right: '0', textDecoration:'none'}}>See All</Link>
+            </span>
+            </CategoryTitleDiv>
+ 
             <MovieContainer>
                 {displayMovies}
             </MovieContainer>

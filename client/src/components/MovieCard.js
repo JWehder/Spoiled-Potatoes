@@ -9,13 +9,14 @@ function MovieCard({ title, poster }) {
                 <MovieButton>
                         <StyledImg src={poster} alt={poster}></StyledImg>
                 </MovieButton>
-                <div>
+                <div style={{ paddingLeft: '10px'}}>
                     <LinkStyle>
                         <MovieContent>
                             <img src="/potato-5-16.png" alt="potato"></img>
                             <MoviePara>77%</MoviePara>
                         </MovieContent>
-                        <MoviePara>{title}</MoviePara>
+                            <MoviePara>{title}</MoviePara>
+                        
                     </LinkStyle>
                 </div>
             </MovieContainer>
@@ -52,11 +53,11 @@ const MovieContainer = styled.div`
 const MoviePara = styled.p`
     font-size: 12px;
     margin: 0px 0px 0px 3px;
+    text-align: left;
 `
 const MovieContent = styled.span`
     display: flex;
     margin-bottom: 5px;
-    padding-left: 5px;
 `
 
 const LinkStyle = styled(Link)`

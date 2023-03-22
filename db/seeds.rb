@@ -9,7 +9,6 @@ movies = [
         "actors": "Mark Kermode, Peter Jackson",
         "description": "A documentary about World War I with never-before-seen footage to commemorate the centennial of the end of the war.",
         "poster": "https://m.media-amazon.com/images/M/MV5BZWI3ZThmYzUtNDJhOC00ZWY4LThiNmMtZDgxNjE3Yzk4NDU1XkEyXkFqcGdeQXVyNTk5Nzg1NjQ@._V1_SX300.jpg",
-
     },
     {
         "title": "Midnight Family",
