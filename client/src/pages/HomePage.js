@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
+import NewsPane from "../components/NewsPane";
 
 function HomePage() {
 
@@ -17,6 +18,7 @@ function HomePage() {
 
     return (
         <div>
+            <NewsPane />
             {displayMovies}
         </div>
     )
