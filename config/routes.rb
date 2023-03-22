@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :movies, only: [:index, :show]
   resources :users, only: [:update]
+  get "/search", to: "movies#search"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

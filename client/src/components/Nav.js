@@ -7,7 +7,15 @@ import { UserContext } from "../context/User";
 
 function Navigation() {
     const [search, setSearch] = useState("")
-    const { user, setUser } = useContext(UserContext)
+    // const { setResults } = useContext(UserContext)
+
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        fetch(`/search?q=${search}`)
+            .then((resp) => resp.json())
+            .then((searchResults) => console.log(searchResults))
+    }
 
     return (
         <>
@@ -19,6 +27,7 @@ function Navigation() {
                     <Nav.Link href="/movies">Movies</Nav.Link>
                 </Nav>
                 <div style={{ display: 'flex', justifyContent: 'center'}}>
+                <StyledForm onSubmit={handleSubmit}>
                 <SearchBar
                     type="text" 
                     name="Search"
@@ -26,6 +35,7 @@ function Navigation() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
+                </StyledForm>
                 </div>
                 <Nav >
                     <Nav.Link href="/login">Logout</Nav.Link>

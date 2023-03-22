@@ -11,6 +11,11 @@ class MoviesController < ApplicationController
         render json: movie, status: :ok
     end
 
+    def search
+        results = Movie.where("title LIKE ?", "%#{params[:q]}%")
+        render json: results
+    end
+
     private
 
     def render_not_found_response
