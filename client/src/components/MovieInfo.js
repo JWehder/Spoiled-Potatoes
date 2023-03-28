@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Wrapper from "../styles/Wrapper";
 import styled from "styled-components";
 import { MovieContext } from "../context/Movie";
+import CategoryTitleDiv from "../styles/CategoryTitleDiv";
 
 function MovieInfo() {
     // const { movieId } = useParams();
@@ -9,12 +10,11 @@ function MovieInfo() {
     const movieId = 2
 
     if (movies.length === 0) {
-        return <h1>Loading...</h1>
+        return <h1 style={{ textAlign: 'center' }}>Loading...</h1>
     }
 
-    const displayMovieInfo = 
-
     const movie = movies.find((movie) => movie.id === movieId) 
+    console.log(movie)
 
     return (
         <Wrapper>
@@ -28,10 +28,13 @@ function MovieInfo() {
                     <h4 style={{ marginLeft: "5px" }}>77%</h4>
                 </Rating>
             </TitleContent>
-           <div>
-           <span> <RatingContainer>{movie.rated}</RatingContainer> {movie.release_date}, {movie.genre}, {movie.runtime}</span>
-           </div>
-           <section>{movie.description}</section>
+
+
+            <CategoryTitleDiv style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ borderRight: '3px solid black', height: '30px', marginRight: '10px' }}></div>
+                    <h4 style={{ width: 'auto', marginRight: '10px' }}>Description</h4>
+            </CategoryTitleDiv>
+            <Description>{movie.description}</Description>
         </Wrapper>    
     )
 }
@@ -42,6 +45,11 @@ const StyledImg = styled.img`
     border: none;
     border-radius: 10px;
 `
+const Description = styled.p`
+    font-size: 13px;
+`
+
+
 
 const MovieTitle = styled.h3`
     text-align: center;
