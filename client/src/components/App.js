@@ -6,6 +6,7 @@ import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import HomePage from "../pages/HomePage";
 import { MovieProvider } from "../context/Movie";
 import MoviesPage from "../pages/MoviesPage";
+import MovieInfo from "./MovieInfo";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
             </Route>
             <Route exact path="/movies">
               <MoviesPage />
+            </Route>
+            <Route exact path="/movie_info">
+              <MovieInfo />
             </Route>
             <Route exact path="/login">
               <LoginPage />
