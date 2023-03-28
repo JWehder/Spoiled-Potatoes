@@ -2,23 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function MovieCard({ title, poster }) {
+function MovieCard({ id, title, poster }) {
 
     return (
             <MovieContainer>
+                <LinkStyle to={`/movies/${id}`}>
                 <MovieButton>
                         <StyledImg src={poster} alt={poster}></StyledImg>
                 </MovieButton>
                 <div style={{ paddingLeft: '10px'}}>
-                    <LinkStyle>
-                        <MovieContent>
-                            <img src="/potato-5-16.png" alt="potato"></img>
-                            <MoviePara>77%</MoviePara>
-                        </MovieContent>
-                            <MoviePara>{title}</MoviePara>
-                        
-                    </LinkStyle>
+                    <MovieContent>
+                        <img src="/potato-5-16.png" alt="potato"></img>
+                        <MoviePara>77%</MoviePara>
+                    </MovieContent>
+                        <MoviePara>{title}</MoviePara>
                 </div>
+                </LinkStyle>
             </MovieContainer>
     )
 }

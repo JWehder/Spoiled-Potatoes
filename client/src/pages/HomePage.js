@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from "react";
-import MovieCard from "../components/MovieCard";
+import React, { useContext } from "react";
 import NewsPane from "../components/NewsPane";
 import MovieContainer from "../styles/MovieContainer";
 import CategoryTitleDiv from "../styles/CategoryTitleDiv";
 import { Link } from "react-router-dom";
 import Navigation from "../components/Nav";
+import { MovieContext } from "../context/Movie";
 
 function HomePage() {
 
-    const [movies, setMovies] = useState([])
-
-    useEffect(() => {
-        fetch('/movies')
-        .then((resp) => resp.json())
-        .then((movies) => setMovies(movies))
-    }, [])
-
-    const displayMovies = movies.map((movie) => {
-        return <MovieCard title={movie.title} poster={movie.poster} key={movie.title} />
-    })
+    const { displayMovies } = useContext(MovieContext)
 
     return (
             <div style={{ width: '900px', textAlign: 'center', margin: '0 auto', backgroundColor: '#FFFAFA' }}>
