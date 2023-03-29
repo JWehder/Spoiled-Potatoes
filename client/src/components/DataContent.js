@@ -1,22 +1,32 @@
 import React from "react";
+import styled from "styled-components";
 
-function DataContent() {
+function DataContent({ movie }) {
 
     return (
-        <DataContent>
-            <p><b>Rated:</b> <RatingContainer>{movie.rated}</RatingContainer></p>
-            <p><b>Director:</b> {movie.director}</p>
-            <p><b>Genre:</b> {movie.genre}</p>
-            <p><b>Release Date:</b> {movie.release_date}</p>
-
-        </DataContent>
+        <DataContainer>
+            <Dp><b>Rated:</b> <RatingContainer>{movie.rated}</RatingContainer></Dp>
+            <Dp><b>Director:</b> {movie.director}</Dp>
+            <Dp><b>Actors:</b> {movie.actors}</Dp>
+            <Dp><b>Genre:</b> {movie.genre}</Dp>
+            <Dp><b>Release Date:</b> {movie.release_date}</Dp>
+            <Dp><b>Runtime:</b> {movie.runtime}</Dp>
+        </DataContainer>
     )
 }
 
 const DataContainer = styled.div`
-    text-align: center;
     font-size: 13px;
+    margin: 15px;
+`
 
+const Dp = styled.p`
+    margin-bottom: 2px;
+`
+
+const RatingContainer = styled.div`
+    border: 1px solid black;
+    display: inline-block;
 `
 
 export default DataContent;
