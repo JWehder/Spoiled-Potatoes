@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :movies, only: [:index, :show]
   resources :users, only: [:update]
   get "/search", to: "movies#search"
