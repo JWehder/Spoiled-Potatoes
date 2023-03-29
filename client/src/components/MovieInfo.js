@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { MovieContext } from "../context/Movie";
 import DataContent from "./DataContent";
 import Description from "./Description";
+import StarRating from "./StarRating";
 
 function MovieInfo() {
     // const { movieId } = useParams();
@@ -15,7 +16,6 @@ function MovieInfo() {
     }
 
     const movie = movies.find((movie) => movie.id === movieId) 
-    console.log(movie)
 
     return (
         <Wrapper>
@@ -31,7 +31,9 @@ function MovieInfo() {
             </TitleContent>
             <DataContent movie={movie}/>
             <Description movie={movie}/>
+            <StarRating />
         </Wrapper>    
+        
     )
 }
 
