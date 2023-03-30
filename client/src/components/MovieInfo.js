@@ -1,14 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Wrapper from "../styles/Wrapper";
 import styled from "styled-components";
 import { MovieContext } from "../context/Movie";
 import DataContent from "./DataContent";
 import Description from "./Description";
-import StarRating from "./StarRating";
+import ReviewForm from "./ReviewForm";
+import { Button } from "react-bootstrap";
+import { UserContext } from "../context/User";
 
 function MovieInfo() {
     // const { movieId } = useParams();
+    const { user } = useContext(UserContext)
     const { movies } = useContext(MovieContext);
+    const [showReviews, setShowReviews] = useState(false)
     const movieId = 2
 
     if (movies.length === 0) {
@@ -17,7 +21,14 @@ function MovieInfo() {
 
     const movie = movies.find((movie) => movie.id === movieId) 
 
+    const reviews = movie.reviews.map((review) => {
+        if (review.user_id === user.id) {
+            <ReviewForm
+        }
+    })
+
     return (
+        <>
         <Wrapper>
             <div style={{ textAlign: "center", marginBottom: "10px" }}>
             <StyledImg src={movie.poster} alt={movie.title} />
@@ -31,8 +42,12 @@ function MovieInfo() {
             </TitleContent>
             <DataContent movie={movie}/>
             <Description movie={movie}/>
-            <StarRating />
-        </Wrapper>    
+        </Wrapper>  
+        <div style={{ textAlign: "center" }}>
+            <Button style={{ textDecoration:"none"}} variant="link" onClick={() => setShowReviews(!showReviews)}>{showReviews ? "Close Reviews" : `Show Reviews(${movie.reviews.length})`}</Button>
+        </div>
+        <ReviewForm movie={movie} />
+        </>
         
     )
 }

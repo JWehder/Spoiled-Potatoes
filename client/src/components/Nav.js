@@ -37,7 +37,7 @@ function Navigation() {
                 />
                 </StyledForm>
                 </div>
-                <Nav >
+                <Nav>
                     <Nav.Link href="/login">Logout</Nav.Link>
                 </Nav>
                 </Container>

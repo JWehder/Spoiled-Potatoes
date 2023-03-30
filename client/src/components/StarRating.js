@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-function StarRating() {
+function StarRating({ rating, setRating }) {
   const [hoverRating, setHoverRating] = useState(0);
-  const [rating, setRating] = useState(0)
 
   const stars = [];
   for (let i = 1; i <= 5; i++) {
