@@ -6,33 +6,21 @@ import StarRating from "./StarRating";
 import { UserContext } from "../context/User";
 import CustomButton from "../styles/Button";
 import styled from "styled-components";
+import DisabledStarRating from "./DisabledStarRating";
 
-function ReviewForm({ movie }) {
+function DisabledReviewForm({ rating, comment }) {
     const { user } = useContext(UserContext)
-    const [comment, setComment] = useState();
-    const [rating, setRating] = useState(0)
-
-    function handleSubmit(e) {
-        e.preventDefault()
-        const review = {
-            rating: rating,
-            comment: comment,
-            user_id: user.id,
-            movie_id: movie.id
-        }
-        fetch('')
-    }
 
     return (
         <Wrapper style={{ padding: "14px"}}>
             <div style={{ display: "flex", justifyContent:"space-between"}}>
-                <StarRating rating= {rating} setRating={setRating} />
+                <DisabledStarRating rating= {rating} />
                 <p style={{ marginLeft: "50px" }}>user</p>
             </div>
-            <StyledForm onSubmit={handleSubmit}>
+            <StyledForm>
             <FloatingLabel 
             controlId="floatingTextarea2" 
-            label="What did you think of the movie?" 
+            label="Comment"
             className="mb-3"
             >
             <StyledForm.Control 
@@ -40,7 +28,8 @@ function ReviewForm({ movie }) {
             name="bio"
             style={{ height: "70px"}}
             value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            disabled
+            readOnly
             />
             </FloatingLabel>
             <div style={{ textAlign: "center" }}>
@@ -57,4 +46,4 @@ const ReviewButton = styled(CustomButton)`
     padding: 2px;
 `
 
-export default ReviewForm;
+export default DisabledReviewForm;

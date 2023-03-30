@@ -7,6 +7,7 @@ import Description from "./Description";
 import ReviewForm from "./ReviewForm";
 import { Button } from "react-bootstrap";
 import { UserContext } from "../context/User";
+import DisabledReviewForm from "./DisabledReviewForm";
 
 function MovieInfo() {
     // const { movieId } = useParams();
@@ -23,7 +24,9 @@ function MovieInfo() {
 
     const reviews = movie.reviews.map((review) => {
         if (review.user_id === user.id) {
-            <ReviewForm
+            return <ReviewForm movie={movie} />
+        } else {
+            return <DisabledReviewForm rating={review.rating} comment={review.comment}/>
         }
     })
 
@@ -46,6 +49,7 @@ function MovieInfo() {
         <div style={{ textAlign: "center" }}>
             <Button style={{ textDecoration:"none"}} variant="link" onClick={() => setShowReviews(!showReviews)}>{showReviews ? "Close Reviews" : `Show Reviews(${movie.reviews.length})`}</Button>
         </div>
+        {showReviews ? reviews : ""}
         <ReviewForm movie={movie} />
         </>
         
