@@ -1,12 +1,11 @@
 import { React, useState, useContext } from "react";
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserContext } from "../context/User";
-import Alert from "react-bootstrap/Alert";
 import { Redirect } from "react-router-dom";
+import { Col, Row, FloatingLabel, Alert } from "react-bootstrap";
 
-function SignupForm() {
+function SignupForm({ setShowLogin }) {
     const { setUser } = useContext(UserContext)
 
     const [errors, setErrors] = useState([]);
@@ -14,6 +13,8 @@ function SignupForm() {
     const [showErrors, setShowErrors] = useState(false)
 
     const [userObject, setUserObject] = useState({
+        first_name: "",
+        last_name: "",
         username: "",
         password: "",
         password_confirmation: "",
@@ -35,7 +36,7 @@ function SignupForm() {
             if(r.ok) {
                 r.json().then((user) => { 
                     setUser(user)
-                    return <Redirect to="/login" />
+                    setShowLogin(true)
                 })
             } else {
                 r.json().then((err) => {
@@ -66,6 +67,34 @@ function SignupForm() {
                 :
                 ""
                 }
+                <Row>
+                <Col>
+                <FloatingLabel
+                label="First Name"
+                className="mb-3"
+                >
+                <StyledForm.Control 
+                type="text" 
+                name="first_name"
+                value={userObject.first_name}
+                onChange={(e) => changeUserValue(e)}
+                />
+                </FloatingLabel>
+                </Col>
+                <Col>
+                <FloatingLabel 
+                label="Last Name" 
+                className="mb-3"
+                >
+                <StyledForm.Control 
+                type="text" 
+                name="last_name"
+                value={userObject.last_name}
+                onChange={(e) => changeUserValue(e)}
+                />
+                </ FloatingLabel>
+                </Col>
+                </Row>
                 <FloatingLabel
                 label="Username"
                 className="mb-3"

@@ -10,6 +10,11 @@ class SessionsController < ApplicationController
         end
     end
 
+    def show
+        user = User.find_by(id: session[:user_id])
+        render json: user, status: :ok
+    end
+
     def destroy
         user = User.find_by(id: session[:user_id])
         if user

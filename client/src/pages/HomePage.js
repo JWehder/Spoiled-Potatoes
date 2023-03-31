@@ -5,10 +5,14 @@ import CategoryTitleDiv from "../styles/CategoryTitleDiv";
 import { Link } from "react-router-dom";
 import Navigation from "../components/Nav";
 import { MovieContext } from "../context/Movie";
+import { UserContext } from "../context/User";
 
 function HomePage() {
+    const { user } = useContext(UserContext)
 
     const { displayMovies } = useContext(MovieContext)
+
+    console.log(user)
 
     return (
             <div style={{ width: '900px', textAlign: 'center', margin: '0 auto', backgroundColor: '#FFFAFA' }}>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/search", to: "movies#search"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+  get "/user", to: "sessions#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   post "/forgot_password", to: "users#forgot_password"

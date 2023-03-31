@@ -16,8 +16,6 @@ function LoginForm() {
     const [showErrors, setShowErrors] = useState(false)
     const [errors, setErrors] = useState([])
 
-    console.log(user)
-
     function onChange(e) {
         setLoginUser({
             ...loginUser,
@@ -38,7 +36,7 @@ function LoginForm() {
             if (r.ok) {
                 r.json().then((user) => {
                     setUser(user)
-                    return <Redirect to="/" />
+                    console.log(user)
                 })
             } else {
                 setShowErrors(true)
@@ -46,6 +44,8 @@ function LoginForm() {
             }
         })
     }
+
+    if (user) return <Redirect to="/" />
 
     return (
             <StyledForm onSubmit={handleSubmit}>

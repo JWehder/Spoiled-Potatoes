@@ -32,12 +32,14 @@ function ReviewForm({ movie, updateMovie }) {
             }
         })
     }
+    
+    console.log(user)
 
     return (
         <Wrapper style={{ padding: "14px"}}>
             <div style={{ display: "flex", justifyContent:"space-between"}}>
                 <StarRating rating= {rating} setRating={setRating} />
-                <p style={{ marginLeft: "50px" }}>user</p>
+                <p style={{ marginLeft: "50px" }}>{user.username}</p>
             </div>
             <StyledForm onSubmit={handleSubmit}>
             <FloatingLabel 

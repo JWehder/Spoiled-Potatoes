@@ -27,7 +27,7 @@ function LoginPage() {
                 :
             (
                 <>
-                <SignupForm />
+                <SignupForm setShowLogin={setShowLogin}/>
                 <hr />
                 <p>Already have an account?</p>
                 <CustomButton variant="secondary" onClick={() => setShowLogin(true)}>Sign In</CustomButton>
