@@ -4,9 +4,10 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import Alert from 'react-bootstrap/Alert';
 import { UserContext } from "../context/User";
+import { Redirect } from "react-router-dom";
 
 function LoginForm() {
-    const { setUser } = useContext(UserContext);
+    const { setUser, user } = useContext(UserContext);
 
     const [loginUser, setLoginUser] = useState({
         username: "",
@@ -14,6 +15,8 @@ function LoginForm() {
     })
     const [showErrors, setShowErrors] = useState(false)
     const [errors, setErrors] = useState([])
+
+    console.log(user)
 
     function onChange(e) {
         setLoginUser({
@@ -33,10 +36,13 @@ function LoginForm() {
             body: JSON.stringify(loginUser),
         }).then((r) => {
             if (r.ok) {
-                r.json().then((user) => setUser(user))
+                r.json().then((user) => {
+                    setUser(user)
+                    return <Redirect to="/" />
+                })
             } else {
                 setShowErrors(true)
-                r.json().then((err) => setErrors(err.errors))
+                r.json().then((err) => console.log(err.errors))
             }
         })
     }

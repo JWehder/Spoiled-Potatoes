@@ -4,6 +4,7 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserContext } from "../context/User";
 import Alert from "react-bootstrap/Alert";
+import { Redirect } from "react-router-dom";
 
 function SignupForm() {
     const { setUser } = useContext(UserContext)
@@ -32,7 +33,10 @@ function SignupForm() {
             body:JSON.stringify(userObject)
         }).then((r) => {
             if(r.ok) {
-                r.json().then((user) => setUser(user))
+                r.json().then((user) => { 
+                    setUser(user)
+                    return <Redirect to="/login" />
+                })
             } else {
                 r.json().then((err) => {
                     // setShowErrors(true)

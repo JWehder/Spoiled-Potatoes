@@ -8,19 +8,23 @@ import ReviewForm from "./ReviewForm";
 import { Button } from "react-bootstrap";
 import { UserContext } from "../context/User";
 import DisabledReviewForm from "./DisabledReviewForm";
+import { useParams } from "react-router-dom";
 
 function MovieInfo() {
-    // const { movieId } = useParams();
+    const { movieId } = useParams();
     const { user } = useContext(UserContext)
-    const { movies } = useContext(MovieContext);
+    const { movies, setMovies } = useContext(MovieContext);
     const [showReviews, setShowReviews] = useState(false)
-    const movieId = 2
 
     if (movies.length === 0) {
         return <h1 style={{ textAlign: 'center' }}>Loading...</h1>
     }
 
-    const movie = movies.find((movie) => movie.id === movieId) 
+    function updateMovie(updatedMovie) {
+        setMovies((movies) => movies.map((movie) => movie.id === updatedMovie.id ? updatedMovie : movie))
+    }
+
+    const movie = movies.find((movie) => movie.id == movieId) 
 
     const reviews = movie.reviews.map((review) => {
         if (review.user_id === user.id) {
@@ -39,7 +43,7 @@ function MovieInfo() {
             <TitleContent>
                 <MovieTitle>{movie.title}</MovieTitle>
                 <Rating>
-                    <img src="potato-5-32.png" alt="potato"/> 
+                    <img src="/potato-5-32.png" alt="potato"/> 
                     <h4 style={{ marginLeft: "5px" }}>77%</h4>
                 </Rating>
             </TitleContent>
@@ -49,8 +53,8 @@ function MovieInfo() {
         <div style={{ textAlign: "center" }}>
             <Button style={{ textDecoration:"none"}} variant="link" onClick={() => setShowReviews(!showReviews)}>{showReviews ? "Close Reviews" : `Show Reviews(${movie.reviews.length})`}</Button>
         </div>
+        <ReviewForm movie={movie} updateMovie={updateMovie}/>
         {showReviews ? reviews : ""}
-        <ReviewForm movie={movie} />
         </>
         
     )

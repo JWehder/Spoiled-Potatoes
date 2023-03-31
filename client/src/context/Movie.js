@@ -16,7 +16,7 @@ function MovieProvider({ children }) {
         return <MovieCard id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
     })
     
-    return <MovieContext.Provider value={{ displayMovies, movies }}>{children}</MovieContext.Provider>;
+    return <MovieContext.Provider value={{ displayMovies, movies, setMovies }}>{children}</MovieContext.Provider>;
 }
 
 export { MovieProvider, MovieContext }

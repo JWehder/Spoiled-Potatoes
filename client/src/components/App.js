@@ -17,11 +17,8 @@ function App() {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route exact path="/movies">
+            <Route path="/movies">
               <MoviesPage />
-            </Route>
-            <Route exact path="/movie_info">
-              <MovieInfo />
             </Route>
             <Route exact path="/login">
               <LoginPage />

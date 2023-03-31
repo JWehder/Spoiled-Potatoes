@@ -7,7 +7,7 @@ import { UserContext } from "../context/User";
 import CustomButton from "../styles/Button";
 import styled from "styled-components";
 
-function ReviewForm({ movie }) {
+function ReviewForm({ movie, updateMovie }) {
     const { user } = useContext(UserContext)
     const [comment, setComment] = useState();
     const [rating, setRating] = useState(0)
@@ -20,7 +20,17 @@ function ReviewForm({ movie }) {
             user_id: user.id,
             movie_id: movie.id
         }
-        fetch('')
+        fetch('/reviews', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(review)
+        }).then((r) => {
+            if (r.ok) {
+                r.json().then((updatedMovie) => updateMovie(updatedMovie))
+            }
+        })
     }
 
     return (
