@@ -28,11 +28,13 @@ function MovieInfo() {
 
     const reviews = movie.reviews.map((review) => {
         if (review.user_id === user.id) {
-            return <ReviewForm movie={movie} />
+            return <ReviewForm key={review.id} movie={movie} />
         } else {
             return <DisabledReviewForm rating={review.rating} comment={review.comment}/>
         }
     })
+
+    console.log(movie)
 
     return (
         <>
@@ -53,8 +55,8 @@ function MovieInfo() {
         <div style={{ textAlign: "center" }}>
             <Button style={{ textDecoration:"none"}} variant="link" onClick={() => setShowReviews(!showReviews)}>{showReviews ? "Close Reviews" : `Show Reviews(${movie.reviews.length})`}</Button>
         </div>
-        <ReviewForm movie={movie} updateMovie={updateMovie}/>
         {showReviews ? reviews : ""}
+        <ReviewForm movie={movie} updateMovie={updateMovie}/>
         </>
         
     )

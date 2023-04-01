@@ -2,9 +2,9 @@ import React, { useContext, useState, useRef } from "react";
 import { MovieContext } from "../context/Movie";
 import StyledForm from "../styles/StyledForm";
 import styled from "styled-components";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-function SearchBar() {
+function SearchBar(props) {
     const { setMovies, setIsSubmitted, isSubmitted } = useContext(MovieContext)
 
     const [value, setValue] = useState("")
@@ -16,8 +16,9 @@ function SearchBar() {
             .then((resp) => resp.json())
             .then((searchResults) => { 
                 setMovies(searchResults)
-                setIsSubmitted(!isSubmitted)
+                props.history.push('/movies')
             })
+
     }
 
     return (

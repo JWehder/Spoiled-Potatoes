@@ -4,7 +4,6 @@ const UserContext = createContext();
 
 function UserProvider({ children }) {
     const [user, setUser] = useState(null)
-    const [ID, setID] = useState(null)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
     useEffect(() => {

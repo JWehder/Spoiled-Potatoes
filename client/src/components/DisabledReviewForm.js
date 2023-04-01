@@ -1,15 +1,10 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { FloatingLabel } from "react-bootstrap";
 import StyledForm from "../styles/StyledForm";
 import Wrapper from "../styles/Wrapper";
-import StarRating from "./StarRating";
-import { UserContext } from "../context/User";
-import CustomButton from "../styles/Button";
-import styled from "styled-components";
 import DisabledStarRating from "./DisabledStarRating";
 
 function DisabledReviewForm({ rating, comment }) {
-    const { user } = useContext(UserContext)
 
     return (
         <Wrapper style={{ padding: "14px"}}>
@@ -32,18 +27,10 @@ function DisabledReviewForm({ rating, comment }) {
             readOnly
             />
             </FloatingLabel>
-            <div style={{ textAlign: "center" }}>
-                <ReviewButton variant="primary" type="submit">Submit</ReviewButton>
-            </div>
             </StyledForm>
         </Wrapper>
     )
 }
 
-const ReviewButton = styled(CustomButton)`
-    margin-top: 2px;
-    margin-bottom: 2px;
-    padding: 2px;
-`
 
 export default DisabledReviewForm;

@@ -17,7 +17,8 @@ function ReviewForm({ movie, updateMovie }) {
         const review = {
             rating: rating,
             comment: comment,
-            movie_id: movie.id
+            movie_id: movie.id,
+            username: user.username
         }
         fetch('/reviews', {
             method: "POST",

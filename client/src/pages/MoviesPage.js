@@ -6,11 +6,8 @@ import MovieInfo from "../components/MovieInfo";
 import styled from "styled-components";
 
 function MoviesPage() {
-    const { displayMovies, isSubmitted } = useContext(MovieContext)
+    const { displayMovies } = useContext(MovieContext)
     const match = useRouteMatch();
-
-    if (isSubmitted) return <Redirect to="/movies" />
-
     
     return (
             <div style={{ width: '900px', margin: '0 auto', backgroundColor: 'white'}}>
@@ -19,10 +16,11 @@ function MoviesPage() {
                 <Route exact path={match.url}>
                     {displayMovies} 
                 </Route>
+                </MovieContainer>
                 <Route exact path='/movies/:movieId'>
                     <MovieInfo />
                 </Route>
-                </MovieContainer>
+                
             </div>
     )
 }
