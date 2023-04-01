@@ -17,7 +17,6 @@ function ReviewForm({ movie, updateMovie }) {
         const review = {
             rating: rating,
             comment: comment,
-            user_id: user.id,
             movie_id: movie.id
         }
         fetch('/reviews', {
@@ -32,14 +31,12 @@ function ReviewForm({ movie, updateMovie }) {
             }
         })
     }
-    
-    console.log(user)
 
     return (
         <Wrapper style={{ padding: "14px"}}>
             <div style={{ display: "flex", justifyContent:"space-between"}}>
                 <StarRating rating= {rating} setRating={setRating} />
-                <p style={{ marginLeft: "50px" }}>{user.username}</p>
+                <p style={{ marginLeft: "50px" }}>{user ? user.username : "user"}</p>
             </div>
             <StyledForm onSubmit={handleSubmit}>
             <FloatingLabel 

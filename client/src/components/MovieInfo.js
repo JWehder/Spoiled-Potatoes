@@ -6,13 +6,13 @@ import DataContent from "./DataContent";
 import Description from "./Description";
 import ReviewForm from "./ReviewForm";
 import { Button } from "react-bootstrap";
-import { UserContext } from "../context/User";
 import DisabledReviewForm from "./DisabledReviewForm";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../context/User";
 
 function MovieInfo() {
-    const { movieId } = useParams();
     const { user } = useContext(UserContext)
+    const { movieId } = useParams();
     const { movies, setMovies } = useContext(MovieContext);
     const [showReviews, setShowReviews] = useState(false)
 
