@@ -7,6 +7,19 @@ class ReviewsController < ApplicationController
         render json: review.movie, status: :created
     end
 
+    def update
+        review = Review.find(params[:id])
+        review.update!(review_params)
+        render json: review.movie, status: :accepted
+    end
+
+    def destroy
+        review = Review.find(params[:id])
+        movie = review.movie
+        review.destroy
+        render json: movie
+    end
+
     private
 
     def render_unprocessable_entity(invalid)

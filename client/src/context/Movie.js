@@ -15,8 +15,12 @@ function MovieProvider({ children }) {
     const displayMovies = movies.map((movie) => {
         return <MovieCard id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
     })
+
+    function updateMovie(updatedMovie) {
+        setMovies((movies) => movies.map((movie) => movie.id === updatedMovie.id ? updatedMovie : movie))
+    }
     
-    return <MovieContext.Provider value={{ displayMovies, movies, setMovies }}>{children}</MovieContext.Provider>;
+    return <MovieContext.Provider value={{ displayMovies, movies, setMovies, updateMovie }}>{children}</MovieContext.Provider>;
 }
 
 export { MovieProvider, MovieContext }

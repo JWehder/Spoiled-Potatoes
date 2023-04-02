@@ -9,28 +9,26 @@ import { Button } from "react-bootstrap";
 import DisabledReviewForm from "./DisabledReviewForm";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../context/User";
+import EditReviewForm from "./EditReviewForm";
 
 function MovieInfo() {
     const { user } = useContext(UserContext)
     const { movieId } = useParams();
-    const { movies, setMovies } = useContext(MovieContext);
+    const { updateMovie, movies } = useContext(MovieContext);
     const [showReviews, setShowReviews] = useState(false)
 
     if (movies.length === 0) {
         return <h1 style={{ textAlign: 'center' }}>Loading...</h1>
     }
 
-    function updateMovie(updatedMovie) {
-        setMovies((movies) => movies.map((movie) => movie.id === updatedMovie.id ? updatedMovie : movie))
-    }
-
     const movie = movies.find((movie) => movie.id == movieId) 
 
     const reviews = movie.reviews.map((review) => {
         if (review.user_id === user.id) {
-            return <ReviewForm key={review.id} movie={movie} />
+            return <EditReviewForm key={review.id} movie={movie} rating={review.rating} comment={review.comment} id={review.id}/>
         } else {
-            return <DisabledReviewForm rating={review.rating} comment={review.comment}/>
+            const foundUser = movie.users.find((user) => review.user_id === user.id)
+            return <DisabledReviewForm key={review.id} rating={review.rating} comment={review.comment} user= {foundUser}/>
         }
     })
 
