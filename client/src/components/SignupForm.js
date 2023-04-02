@@ -84,7 +84,9 @@ function SignupForm({ setShowLogin }) {
                 name="first_name"
                 value={userObject.first_name}
                 onChange={(e) => changeUserValue(e)}
+                isInvalid={!!errors && errors.first_name}
                 />
+                {errors && errors.first_name && displayErrors(errors.first_name)}
                 </FloatingLabel>
                 </Col>
                 <Col>
@@ -97,7 +99,9 @@ function SignupForm({ setShowLogin }) {
                 name="last_name"
                 value={userObject.last_name}
                 onChange={(e) => changeUserValue(e)}
+                isInvalid={!!errors && errors.last_name}
                 />
+                {errors && errors.last_name && displayErrors(errors.last_name)}
                 </ FloatingLabel>
                 </Col>
                 </Row>
@@ -106,7 +110,6 @@ function SignupForm({ setShowLogin }) {
                 className="mb-3"
                 >
                 <StyledForm.Control 
-                required
                 type="text" 
                 name="username"
                 value={userObject.username}

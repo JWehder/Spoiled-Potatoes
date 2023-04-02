@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
     has_secure_password
 
+    validates :first_name, presence: true
+    validates :last_name, presence: true
     validates :username, presence: true, uniqueness: true
     validates :password, length: { minimum: 8 }, format: { with: /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x }
     validates :email, presence: true,
