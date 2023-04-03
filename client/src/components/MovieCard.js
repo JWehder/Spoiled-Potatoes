@@ -57,6 +57,7 @@ const MoviePara = styled.p`
 const MovieContent = styled.span`
     display: flex;
     margin-bottom: 5px;
+    margin-top: 5px;
 `
 
 const LinkStyle = styled(Link)`

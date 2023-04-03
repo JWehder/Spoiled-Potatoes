@@ -8,7 +8,9 @@ import { MovieContext } from "../context/Movie";
 
 function HomePage() {
 
-    const { displayMovies } = useContext(MovieContext)
+    const { displayMovies, movies } = useContext(MovieContext)
+
+    console.log(movies)
 
     return (
             <div style={{ width: '900px', textAlign: 'center', margin: '0 auto', backgroundColor: '#FFFAFA' }}>

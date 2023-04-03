@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { FloatingLabel, Form } from 'react-bootstrap';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
-import Alert from 'react-bootstrap/Alert';
+
 import { UserContext } from "../context/User";
 import { Redirect } from "react-router-dom";
 
@@ -13,8 +13,7 @@ function LoginForm() {
         username: "",
         password: ""
     })
-    const [showErrors, setShowErrors] = useState(false)
-    const [errors, setErrors] = useState([])
+    const [error, setError] = useState(null)
 
     function onChange(e) {
         setLoginUser({
@@ -36,8 +35,7 @@ function LoginForm() {
             if (r.ok) {
                 r.json().then((user) => setUser(user))
             } else {
-                setShowErrors(true)
-                r.json().then((err) => console.log(err.errors.bio))
+                r.json().then((err) => setError(err.errors[0]))
             }
         })
     }
@@ -46,15 +44,6 @@ function LoginForm() {
 
     return (
             <StyledForm onSubmit={handleSubmit}>
-                {showErrors ?
-                errors.map((error) => {
-                    return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
-                        {error}
-                    </Alert>
-                })
-                :
-                ""
-                }
                 <FloatingLabel
                 controlId="floatingInput"
                 label="Username"
@@ -66,6 +55,7 @@ function LoginForm() {
                 value= {loginUser.username}
                 name="username"
                 onChange={(e) => onChange(e)}
+                isInvalid={!!error}
                 />
                 </FloatingLabel>
                 <FloatingLabel controlId="floatingPassword" label="Password">
@@ -75,7 +65,13 @@ function LoginForm() {
                 name="password"
                 value={loginUser.passwowrd}
                 onChange={(e) => onChange(e)}
+                isInvalid={!!error}
                 />
+                {error && 
+                <Form.Control.Feedback type="invalid">
+                {error}
+                </Form.Control.Feedback>
+                }
                 </FloatingLabel>
                 <CustomButton variant="primary" type="submit">Login</CustomButton>
             </StyledForm>

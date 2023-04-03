@@ -12,8 +12,8 @@ function NewsPane() {
           alt="First slide"
         />
         <Carousel.Caption>New
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>John Wick is back!</h3>
+          <p>See it in theaters now.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={2000}>
@@ -23,8 +23,8 @@ function NewsPane() {
           alt="Second slide"
         />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Better than Rocky?</h3>
+          <p>_</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={2000}>
@@ -33,11 +33,8 @@ function NewsPane() {
           src="wp11002057.jpg"
           alt="Third slide"
         />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+        <Carousel.Caption style={{backgroundColor: '#36454F'}}>
+          <h3>Another flop for DC?</h3>
         </Carousel.Caption>
       </Carousel.Item>
     </NewsCarousel>
