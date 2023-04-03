@@ -32,8 +32,6 @@ function MovieInfo() {
         }
     })
 
-    console.log(movie)
-
     return (
         <>
         <Wrapper>

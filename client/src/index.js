@@ -4,11 +4,17 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
+import { UserProvider } from './context/User';
+import { MovieProvider } from './context/Movie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+  <UserProvider>
+  <MovieProvider>
       <App />
+  </MovieProvider>
+  </UserProvider>
   </BrowserRouter>
 );
 

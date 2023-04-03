@@ -5,6 +5,7 @@ const MovieContext = createContext();
 
 function MovieProvider({ children }) {
     const [movies, setMovies] = useState([])
+    const [currentMovies, setCurrentMovies] = useState([])
 
     useEffect(() => {
         fetch('/movies')
@@ -20,7 +21,7 @@ function MovieProvider({ children }) {
         setMovies((movies) => movies.map((movie) => movie.id === updatedMovie.id ? updatedMovie : movie))
     }
     
-    return <MovieContext.Provider value={{ displayMovies, movies, setMovies, updateMovie }}>{children}</MovieContext.Provider>;
+    return <MovieContext.Provider value={{ displayMovies, movies, setMovies, updateMovie, currentMovies, setCurrentMovies }}>{children}</MovieContext.Provider>;
 }
 
 export { MovieProvider, MovieContext }

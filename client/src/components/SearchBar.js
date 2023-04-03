@@ -1,11 +1,11 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState } from "react";
 import { MovieContext } from "../context/Movie";
 import StyledForm from "../styles/StyledForm";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
 function SearchBar(props) {
-    const { setMovies, setIsSubmitted, isSubmitted } = useContext(MovieContext)
+    const { setCurrentMovies, currentMovies } = useContext(MovieContext)
 
     const [value, setValue] = useState("")
 
@@ -15,8 +15,8 @@ function SearchBar(props) {
         fetch(`/search?q=${value}`)
             .then((resp) => resp.json())
             .then((searchResults) => { 
-                setMovies(searchResults)
-                props.history.push('/movies')
+                setCurrentMovies(searchResults)
+                props.history.push(`/movies/search_results/${value}`)
             })
 
     }

@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 import NewsPane from "../components/NewsPane";
 import MovieContainer from "../styles/MovieContainer";
 import CategoryTitleDiv from "../styles/CategoryTitleDiv";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Navigation from "../components/Nav";
 import { MovieContext } from "../context/Movie";
+import { UserContext } from "../context/User";
 
 function HomePage() {
 
     const { displayMovies, movies } = useContext(MovieContext)
+    const { user } = useContext(UserContext)
 
-    console.log(movies)
+    if (!user) return <Redirect to="/login" />
 
     return (
             <div style={{ width: '900px', textAlign: 'center', margin: '0 auto', backgroundColor: '#FFFAFA' }}>
