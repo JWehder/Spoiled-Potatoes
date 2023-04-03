@@ -4,7 +4,7 @@ movies = [
         "rated": "R",
         "release_date": "01 Feb 2019",
         "runtime": "99 mins",
-        "genre": "Documentary, History, War",
+        "genre": ["Documentary", "History", "War"],
         "director": "Peter Jackson",
         "actors": "Mark Kermode, Peter Jackson",
         "description": "A documentary about World War I with never-before-seen footage to commemorate the centennial of the end of the war.",
