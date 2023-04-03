@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { UserContext } from "../context/User";
 
 function MoviesPage() {
-    const { displayMovies, movies } = useContext(MovieContext)
+    const { displayMovies, movies, displayCurrentMovies, currentMovies } = useContext(MovieContext)
     const { user } = useContext(UserContext)
     const match = useRouteMatch();
 
@@ -25,9 +25,12 @@ function MoviesPage() {
                 <Route exact path='/movies/:movieId'>
                     <MovieInfo />
                 </Route>
+                <MovieContainer>
                 <Route exact path='/movies/search_results/:value'>
-                    <MovieResults />
+                    {currentMovies.length ? displayCurrentMovies : 
+                    <h2 style={{marginTop: '100px', textAlign: 'center'}}>Sorry, we couldn't find the movie you are looking for</h2>}
                 </Route>
+                </MovieContainer>
                 
             </div>
     )
