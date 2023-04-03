@@ -6,7 +6,6 @@ import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import HomePage from "../pages/HomePage";
 import { MovieProvider } from "../context/Movie";
 import MoviesPage from "../pages/MoviesPage";
-import MovieInfo from "./MovieInfo";
 
 function App() {
   return (
