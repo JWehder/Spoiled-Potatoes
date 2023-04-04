@@ -4,6 +4,7 @@ import LoginPage from "../pages/LoginPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import HomePage from "../pages/HomePage";
 import MoviesPage from "../pages/MoviesPage";
+import CreateMovieForm from "./CreateMovieForm";
 
 function App() {
 
@@ -15,6 +16,9 @@ function App() {
             </Route>
             <Route path="/movies">
               <MoviesPage />
+            </Route>
+            <Route path="/create_movie">
+              <CreateMovieForm />
             </Route>
             <Route exact path="/login">
               <LoginPage />

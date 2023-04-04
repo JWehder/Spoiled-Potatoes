@@ -5,6 +5,7 @@ import Navigation from "../components/Nav";
 import MovieInfo from "../components/MovieInfo";
 import styled from "styled-components";
 import { UserContext } from "../context/User";
+import CreateMovieForm from "../components/CreateMovieForm";
 
 function MoviesPage() {
     const { displayMovies, movies, displayCurrentMovies, currentMovies } = useContext(MovieContext)
@@ -31,6 +32,12 @@ function MoviesPage() {
                     <h2 style={{marginTop: '100px', textAlign: 'center'}}>Sorry, we couldn't find the movie you are looking for</h2>}
                 </Route>
                 </MovieContainer>
+                <MovieContainer>
+                <Route exact path='/movies/create_movie'>
+                    <CreateMovieForm />
+                </Route>
+                </MovieContainer>
+                
                 
             </div>
     )

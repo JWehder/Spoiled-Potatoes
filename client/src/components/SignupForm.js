@@ -69,7 +69,6 @@ function SignupForm({ setShowLogin }) {
         })
     }
 
-    console.log(errors)
     return (
         <>  
             <StyledForm onSubmit={handleSubmit}>

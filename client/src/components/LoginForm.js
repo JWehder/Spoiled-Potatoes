@@ -4,9 +4,9 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 
 import { UserContext } from "../context/User";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
-function LoginForm() {
+function LoginForm(props) {
     const { setUser, user } = useContext(UserContext);
 
     const [loginUser, setLoginUser] = useState({
@@ -33,14 +33,16 @@ function LoginForm() {
             body: JSON.stringify(loginUser),
         }).then((r) => {
             if (r.ok) {
-                r.json().then((user) => setUser(user))
+                r.json().then((user) => {
+                    setUser(user)
+                })
             } else {
                 r.json().then((err) => setError(err.errors[0]))
             }
         })
     }
 
-    if (user) return <Redirect to="/" />
+    if (user) return <Redirect to='/' />
 
     return (
             <StyledForm onSubmit={handleSubmit}>

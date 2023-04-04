@@ -38,7 +38,6 @@ function EditReviewForm({ rating, comment, id, movie }) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((updatedMovie) => {
-                    console.log(updatedMovie)
                     updateMovie(updatedMovie)
                 })
             }
