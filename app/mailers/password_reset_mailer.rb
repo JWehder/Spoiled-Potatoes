@@ -3,7 +3,7 @@ class PasswordResetMailer < ApplicationMailer
 
     def password_reset(user)
         @user = user
-        @code = generate_password_code
+        @code =  generate_password_code
         mail(:to => user.email, :subject => "Forgot your Password")
     end
 

@@ -8,6 +8,7 @@ function ResetPasswordForm(props) {
     const [showAlert, setShowAlert] = useState(false)
     const [success, setSuccess] = useState(false)
     const [disabled, setDisabled] = useState(false)
+    const [error, setError] = useState()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -48,8 +49,9 @@ function ResetPasswordForm(props) {
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    // disabled={disabled ? "true" : "false"}
+                    isInvalid={!!error}
                     />
+                    {!!error ? <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback> : ""}
                     </FloatingLabel>
                 <CustomButton variant= "primary" type="submit">Send Code</CustomButton>
                 {showAlert ? 

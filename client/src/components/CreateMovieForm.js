@@ -6,7 +6,7 @@ import Wrapper from "../styles/Wrapper";
 import { MovieContext } from "../context/Movie";
 
 function CreateMovieForm() {
-    const { setMovies, movies } = useContext(MovieContext)
+    const { setMovies, movies, displayErrors } = useContext(MovieContext)
 
     const [errors, setErrors] = useState();
     const [movieObj, setMovieObj] = useState({
@@ -36,21 +36,6 @@ function CreateMovieForm() {
             } else {
                 r.json().then((err) => setErrors(err.errors))
             }
-        })
-    }
-
-    const displayErrors = (errors, errorKey = null) => {
-        return errors.map((error) => {
-            if (errorKey === "password" && error === "is invalid") {
-                error = "Sorry, your password is invalid. Your password must contain at least one digit, at least one lowercase letter, one uppercase letter, and a special character (! @ # $ % ^ &)"
-            } else if (errorKey === "email" && error === "is invalid") {
-                error = "Please follow typical email formatting: joe@email.com"
-            }
-            return ( 
-            <Form.Control.Feedback type="invalid">
-            {error}
-            </Form.Control.Feedback>
-            );
         })
     }
 
@@ -188,7 +173,9 @@ function CreateMovieForm() {
             />
             {errors && errors.poster && displayErrors(errors.poster)}
             </FloatingLabel>
+            <div style={{ textAlign: "center" }}>
             <CustomButton variant= "primary" type="submit">Create Movie</CustomButton>
+            </div>
         </StyledForm>
         </Wrapper>
     )

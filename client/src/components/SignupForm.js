@@ -2,8 +2,8 @@ import { React, useState, useContext } from "react";
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserContext } from "../context/User";
-import { Redirect } from "react-router-dom";
 import { Col, Row, FloatingLabel, Alert, Form } from "react-bootstrap";
+import { MovieContext } from "../context/Movie";
 
 function SignupForm({ setShowLogin }) {
     const { setUser } = useContext(UserContext)
@@ -11,6 +11,7 @@ function SignupForm({ setShowLogin }) {
     const [errors, setErrors] = useState();
     // const [isLoading, setIsLoading] = useState(false);
     const [showErrors, setShowErrors] = useState(false)
+    const { displayErrors } = useContext(MovieContext)
 
     const [userObject, setUserObject] = useState({
         first_name: "",
@@ -44,21 +45,6 @@ function SignupForm({ setShowLogin }) {
                     setErrors(err.errors)
                 })
             }
-        })
-    }
-
-    const displayErrors = (errors, errorKey = null) => {
-        return errors.map((error) => {
-            if (errorKey === "password" && error === "is invalid") {
-                error = "Sorry, your password is invalid. Your password must contain at least one digit, at least one lowercase letter, one uppercase letter, and a special character (! @ # $ % ^ &)"
-            } else if (errorKey === "email" && error === "is invalid") {
-                error = "Please follow typical email formatting: joe@email.com"
-            }
-            return ( 
-            <Form.Control.Feedback type="invalid">
-            {error}
-            </Form.Control.Feedback>
-            );
         })
     }
 
