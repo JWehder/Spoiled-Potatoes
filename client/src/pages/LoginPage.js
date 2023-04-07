@@ -5,6 +5,7 @@ import CustomButton from "../styles/Button";
 import SignupForm from "../components/SignupForm";
 import { Button } from "react-bootstrap";
 import Wrapper from "../styles/Wrapper";
+import { Link } from "react-router-dom"
 
 function LoginPage() {
     const [showLogin, setShowLogin] = useState(true)
@@ -15,7 +16,7 @@ function LoginPage() {
                 <>
                 <LoginForm />
                 <ButtonContainer>
-                <Button href="/forgot_password" variant="link">Forgot password?</Button>
+                <Button variant="link"><Link to="/forgot_password">Forgot password?</Link></Button>
                 </ButtonContainer>
                 <hr />
                 <ButtonContainer>

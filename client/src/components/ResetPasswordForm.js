@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
-import { Alert, Form, FloatingLabel } from "react-bootstrap";
+import { Form, FloatingLabel } from "react-bootstrap";
+import { UserContext } from "../context/User";
 
 function ResetPasswordForm(props) {
+    const { setShowAlert } = useContext(UserContext)
+
     const [email, setEmail] = useState("")
-    const [showAlert, setShowAlert] = useState(false)
-    const [success, setSuccess] = useState(false)
-    const [disabled, setDisabled] = useState(false)
     const [error, setError] = useState()
 
     function handleSubmit(e) {
@@ -22,23 +22,21 @@ function ResetPasswordForm(props) {
         }).then((r) => {
             if(r.ok) {
                 r.json().then(() => {
-                    setSuccess(true)
                     setShowAlert(true)
-                    setDisabled(true)
                     props.onNextStep()
                 })
             } else {
-                setShowAlert(true)
+                r.json().then((err) => setError(err.errors))
             }
         })
     }
 
     return (
         <>
-            <h3 style={{"text-align": "center"}}>Search for your account</h3>
+            <h3 style={{"textAlign": "center"}}>Search for your account</h3>
             <hr />
-            <StyledForm onSubmit={handleSubmit}>
-                    <Form.Label>Please enter the email associated to your account</Form.Label>
+            <StyledForm style= {{"textAlign": "center"}} onSubmit={handleSubmit}>
+                    <Form.Label>Please enter the email associated with your account</Form.Label>
                     <FloatingLabel
                     controlId="floatingInput"
                     label="Email"
@@ -54,11 +52,6 @@ function ResetPasswordForm(props) {
                     {!!error ? <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback> : ""}
                     </FloatingLabel>
                 <CustomButton variant= "primary" type="submit">Send Code</CustomButton>
-                {showAlert ? 
-                <Alert variant={success ? "success" : "danger"}>{success ? "Please check your email for your custom code." : "The email provided was not recognized."}</Alert> 
-                :
-                ""
-                }
             </StyledForm>
         </>
     )

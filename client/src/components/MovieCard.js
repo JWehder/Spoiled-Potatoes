@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function MovieCard({ id, title, poster }) {
+function MovieCard({ overall_rating, id, title, poster }) {
 
     return (
             <MovieContainer>
@@ -13,7 +13,7 @@ function MovieCard({ id, title, poster }) {
                 <div style={{ paddingLeft: '10px'}}>
                     <MovieContent>
                         <img src="/potato-5-16.png" alt="potato"></img>
-                        <MoviePara>77%</MoviePara>
+                        <MoviePara>{overall_rating}%</MoviePara>
                     </MovieContent>
                         <MoviePara>{title}</MoviePara>
                 </div>

@@ -3,12 +3,16 @@ import styled from "styled-components";
 
 function DataContent({ movie }) {
 
+    const displayGenres = genres => {
+        return genres.join(", ")
+    }
+
     return (
         <DataContainer>
             <Dp><b>Rated:</b> <RatingContainer>{movie.rated}</RatingContainer></Dp>
             <Dp><b>Director:</b> {movie.director}</Dp>
             <Dp><b>Actors:</b> {movie.actors}</Dp>
-            <Dp><b>Genre:</b> {movie.genre}</Dp>
+            <Dp><b>Genre:</b> {displayGenres}</Dp>
             <Dp><b>Release Date:</b> {movie.release_date}</Dp>
             <Dp><b>Runtime:</b> {movie.runtime}</Dp>
         </DataContainer>

@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 import CustomButton from "../styles/Button";
 
 function EnterCodeForm(props) {
-    const { setID } = useContext(UserContext)
+    const { setID, showAlert } = useContext(UserContext)
 
     const [code, setCode] = useState(null)
     const [showError, setShowError] = useState(false)
@@ -34,6 +34,11 @@ function EnterCodeForm(props) {
     
     return (
         <>
+            {showAlert ?
+            <Alert variant="success">Please check your email for your custom code.</Alert> 
+            :
+            ""
+            }
             <h2>Please enter the code you were sent via email</h2>
             <hr />
             <StyledForm onSubmit={handleSubmit}>

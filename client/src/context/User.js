@@ -5,6 +5,7 @@ const UserContext = createContext();
 function UserProvider({ children }) {
     const [user, setUser] = useState(null)
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [showAlert, setShowAlert] = useState(false)
 
     useEffect(() => {
         fetch('/user')
@@ -16,7 +17,7 @@ function UserProvider({ children }) {
     }, [])
     
     console.log(user)
-    return <UserContext.Provider value={{user, setUser, setIsSubmitted, isSubmitted}}>{children}</UserContext.Provider>;
+    return <UserContext.Provider value={{user, setUser, setIsSubmitted, isSubmitted, showAlert, setShowAlert}}>{children}</UserContext.Provider>;
 }
 
 export { UserProvider, UserContext }

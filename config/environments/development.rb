@@ -65,14 +65,14 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.zoho.com',
-    port: 2525,
-    domain: 'zohomail.com',
-    user_name: 'jake.wehder@zohomail.com',
-    password: 'testingjake58',
-    authentication: 'plain',
-    enable_starttls_auto: true
+    :address              => 'smtp.zoho.com',
+    :port                 => 587,
+    :user_name            => 'jake.wehder@zohomail.com',
+    :password             => 'testingjake58',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  
   }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = { host: '<zoho>' }
 end

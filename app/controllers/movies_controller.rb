@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
     def index
         movies = Movie.all
-        render json: movies, methods: [:overall_rating]
+        render json: movies, methods: [:overall_rating, :determine_category]
     end
 
     def show

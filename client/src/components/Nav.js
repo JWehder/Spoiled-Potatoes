@@ -10,11 +10,7 @@ function Navigation() {
     const { setUser } = useContext(UserContext)
 
     function handleLogout() {
-        fetch('/logout', {method:"DELETE"}).then((r) => {
-            if (r.ok) {
-                setUser(null)
-            }
-        })
+        fetch('/logout', {method:"DELETE"}).then(() => setUser(null))
     }
 
     return (

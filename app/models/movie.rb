@@ -3,7 +3,16 @@ class Movie < ApplicationRecord
     has_many :users, through: :reviews
 
     def overall_rating
-        self.reviews.average(:rating)
+        average_rating = self.reviews.average(:rating) 
+        if average_rating.nil?
+            0
+        else
+            (average_rating * 20).round
+        end
+    end
+
+    def determine_category
+         category = self.genre.find { |genre| genre == "Comedy" || genre == "Documentary" || genre == "Drama" }
     end
 
     validates :title, presence: true
