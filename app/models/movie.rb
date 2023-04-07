@@ -12,7 +12,9 @@ class Movie < ApplicationRecord
     end
 
     def determine_category
-         category = self.genre.find { |genre| genre == "Comedy" || genre == "Documentary" || genre == "Drama" }
+        puts self.genre
+        category = self.genre.find { |genre| genre == "Comedy" || genre == "Documentary" || genre == "Drama" }
+        category
     end
 
     validates :title, presence: true

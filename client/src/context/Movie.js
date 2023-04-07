@@ -14,7 +14,9 @@ function MovieProvider({ children }) {
         .then((movies) => setMovies(movies))
     }, [])
 
-    console.log(movies)
+    const drama = movies.filter((movie) => movie.determine_category === "Drama")
+    const doc = movies.filter((movie) => movie.determine_category === "Documentary")
+    const comedy = movies.filter((movie) => movie.determine_category === "Comedy")
 
     const displayMovies = movies.map((movie) => {
         return <MovieCard overall_rating= {movie.overall_rating} id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
@@ -43,7 +45,7 @@ function MovieProvider({ children }) {
         })
     }
     
-    return <MovieContext.Provider value={{ displayMovies, movies, setMovies, updateMovie, currentMovies, setCurrentMovies, displayCurrentMovies, displayErrors }}>{children}</MovieContext.Provider>;
+    return <MovieContext.Provider value={{ displayMovies, movies, setMovies, updateMovie, currentMovies, setCurrentMovies, displayCurrentMovies, displayErrors, drama, comedy, doc }}>{children}</MovieContext.Provider>;
 }
 
 export { MovieProvider, MovieContext }
