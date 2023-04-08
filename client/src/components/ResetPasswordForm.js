@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { Form, FloatingLabel } from "react-bootstrap";
-import { UserContext } from "../context/User";
 
 function ResetPasswordForm(props) {
-    const { setShowAlert } = useContext(UserContext)
 
     const [email, setEmail] = useState("")
     const [error, setError] = useState()
@@ -21,10 +19,7 @@ function ResetPasswordForm(props) {
             body: JSON.stringify({email: email})
         }).then((r) => {
             if(r.ok) {
-                r.json().then(() => {
-                    setShowAlert(true)
-                    props.onNextStep()
-                })
+                r.json().then(() => props.onNextStep())
             } else {
                 r.json().then((err) => setError(err.errors))
             }

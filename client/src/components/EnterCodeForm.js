@@ -3,7 +3,6 @@ import StyledForm from "../styles/StyledForm";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Alert } from "react-bootstrap";
 import { UserContext } from "../context/User";
-import { Redirect } from "react-router-dom";
 import CustomButton from "../styles/Button";
 
 function EnterCodeForm(props) {
@@ -24,7 +23,6 @@ function EnterCodeForm(props) {
                 r.json().then((ID) => { 
                     setID(ID)
                     props.onNextStep();
-                    return <Redirect to="/create_password" />
                 })
             } else {
                 setShowError(true)
@@ -34,13 +32,7 @@ function EnterCodeForm(props) {
     
     return (
         <>
-            {showAlert ?
-            <Alert variant="success">Please check your email for your custom code.</Alert> 
-            :
-            ""
-            }
-            <h2>Please enter the code you were sent via email</h2>
-            <hr />
+            <Alert style={{textAlign: 'center'}} variant="success">Please check your email for your custom code.</Alert> 
             <StyledForm onSubmit={handleSubmit}>
                 <FloatingLabel
                     controlId="floatingInput"
@@ -48,7 +40,7 @@ function EnterCodeForm(props) {
                     className="mb-3"
                 >
                     <StyledForm.Control
-                    type="number" 
+                    type="text" 
                     name="code"
                     value={code}
                     onChange={(e) => setCode(e.target.value)}

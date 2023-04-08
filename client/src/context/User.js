@@ -15,8 +15,7 @@ function UserProvider({ children }) {
             }
         })
     }, [])
-    
-    console.log(user)
+
     return <UserContext.Provider value={{user, setUser, setIsSubmitted, isSubmitted, showAlert, setShowAlert}}>{children}</UserContext.Provider>;
 }
 

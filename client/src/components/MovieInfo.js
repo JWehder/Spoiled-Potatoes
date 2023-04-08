@@ -42,7 +42,7 @@ function MovieInfo() {
                 <MovieTitle>{movie.title}</MovieTitle>
                 <Rating>
                     <img src="/potato-5-32.png" alt="potato"/> 
-                    <h4 style={{ marginLeft: "5px" }}>77%</h4>
+                    <h4 style={{ marginLeft: "5px" }}>{movie.overall_rating}</h4>
                 </Rating>
             </TitleContent>
             <DataContent movie={movie}/>

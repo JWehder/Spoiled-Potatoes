@@ -114,9 +114,9 @@ movies = [
 
 puts "seeding..."
 
-movies.each do |movie|
-    Movie.create(movie)
-end
+# movies.each do |movie|
+#     Movie.create(movie)
+# end
 
 50.times do
     Review.create(rating: rand(1..5), comment: Faker::Quote.famous_last_words, user_id: rand(1..6), movie_id: rand(1..7))

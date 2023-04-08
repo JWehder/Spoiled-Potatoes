@@ -7,20 +7,21 @@ const MovieContext = createContext();
 function MovieProvider({ children }) {
     const [movies, setMovies] = useState([])
     const [currentMovies, setCurrentMovies] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         fetch('/movies')
         .then((resp) => resp.json())
-        .then((movies) => setMovies(movies))
+        .then((movies) => {
+            setMovies(movies)
+            setIsLoading(false)
+        })
     }, [])
 
-    const drama = movies.filter((movie) => movie.determine_category === "Drama")
-    const doc = movies.filter((movie) => movie.determine_category === "Documentary")
-    const comedy = movies.filter((movie) => movie.determine_category === "Comedy")
+    // const drama = movies.filter((movie) => movie.determine_category === "Drama")
+    // const doc = movies.filter((movie) => movie.determine_category === "Documentary")
+    // const comedy = movies.filter((movie) => movie.determine_category === "Comedy")
 
-    const displayMovies = movies.map((movie) => {
-        return <MovieCard overall_rating= {movie.overall_rating} id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
-    })
 
     const displayCurrentMovies = currentMovies.map((movie) => {
         return <MovieCard id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
@@ -45,7 +46,7 @@ function MovieProvider({ children }) {
         })
     }
     
-    return <MovieContext.Provider value={{ displayMovies, movies, setMovies, updateMovie, currentMovies, setCurrentMovies, displayCurrentMovies, displayErrors, drama, comedy, doc }}>{children}</MovieContext.Provider>;
+    return <MovieContext.Provider value={{ movies, setMovies, updateMovie, currentMovies, setCurrentMovies, displayCurrentMovies, displayErrors, isLoading }}>{children}</MovieContext.Provider>;
 }
 
 export { MovieProvider, MovieContext }
