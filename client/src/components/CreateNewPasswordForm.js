@@ -1,65 +1,42 @@
 import React, { useContext, useState } from "react";
 import StyledForm from "../styles/StyledForm";
 import { UserContext } from "../context/User";
-import { Redirect } from "react-router-dom";
-import { Alert } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import CustomButton from "../styles/Button";
+import { MovieContext } from "../context/Movie";
 
 function CreateNewPasswordForm(props) {
-    const { ID, setUser, user } = useContext(UserContext)
+    const { id } = useContext(UserContext)
+    const { displayErrors } = useContext(MovieContext)
     const [password, setPassword] = useState("")
     const [password_confirmation, setPasswordConfirmation] = useState("")
-    const [errors, setErrors] = useState([])
-    const [showErrors, setShowErrors] = useState(false)
+    const [errors, setErrors] = useState()
+
+    console.log(id)
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        fetch(`/users/${ID}`, {
+        fetch(`/users/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ 
-                password: password,
-                password_confirmation: password_confirmation
-            }).then((r) => {
+            body: JSON.stringify({password: password,password_confirmation: password_confirmation})
+        }).then((r) => {
                 if(r.ok) {
-                    r.json().then((user) => setUser(user))
+                    r.json().then(() => {
+                        props.onNextStep();
+                        props.history.push("/login")
+                    })
                 } else {
-                    r.json().then((errors) => setErrors(errors))
+                    r.json().then((err) => setErrors(err.errors))
                 }
             })
-        })
-
-        if (user) {
-            fetch('/login', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(user)
-            })
-            .then((r) => r.json())
-            .then(() => <Redirect to="/" />)
-        } else {
-            return 
-        }
-        props.onNextStep();
     }
 
     return (
-        <>
-            {showErrors ?
-            errors.map((error) => {
-                return <Alert onClose={() => setShowErrors(false)} variant="danger" key={error} dismissable>
-                    {error}
-                </Alert>
-            })
-            :
-            ""
-            }
             <StyledForm onSubmit= {handleSubmit}>
                 <FloatingLabel 
                 label="Password" 
@@ -70,7 +47,9 @@ function CreateNewPasswordForm(props) {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                isInvalid={!!errors && errors.password}
                 />
+                {!!errors && errors.password && displayErrors(errors.password, "password")}
                 </ FloatingLabel>
                 <FloatingLabel 
                 label="Password Confirmation" 
@@ -81,12 +60,13 @@ function CreateNewPasswordForm(props) {
                 name="password_confirmation"
                 value={password_confirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
+                isInvalid={!!errors && errors.password_confirmation}
                 />
+                {!!errors && errors.password_confirmation && displayErrors(errors.password_confirmation)}
                 </FloatingLabel>
-                <CustomButton variant="primary" type="submit">Login</CustomButton>
+                <CustomButton variant="primary" type="submit">Submit</CustomButton>
             </StyledForm>
-        </>
     )
 }
 
-export default CreateNewPasswordForm;
+export default withRouter(CreateNewPasswordForm);

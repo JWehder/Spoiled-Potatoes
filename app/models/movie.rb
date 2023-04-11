@@ -12,7 +12,6 @@ class Movie < ApplicationRecord
     end
 
     def determine_category
-        puts self.genre
         category = self.genre.find { |genre| genre == "Comedy" || genre == "Documentary" || genre == "Drama" }
         category
     end

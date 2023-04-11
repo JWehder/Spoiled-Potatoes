@@ -4,7 +4,6 @@ import CustomButton from "../styles/Button";
 import { Form, FloatingLabel } from "react-bootstrap";
 
 function ResetPasswordForm(props) {
-
     const [email, setEmail] = useState("")
     const [error, setError] = useState()
 

@@ -23,7 +23,7 @@ function Navigation() {
                 </Nav>
                     <SearchBar />
                 <Nav>
-                    <Nav.Link onClick= {() => handleLogout()} href="/login">Logout</Nav.Link>
+                    <Nav.Link><NavLink onClick= {() => handleLogout()} to="/login">Logout</NavLink></Nav.Link>
                 </Nav>
                 </Container>
             </Navbar>

@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { FloatingLabel, Form } from "react-bootstrap";
+import { FloatingLabel } from "react-bootstrap";
 import StyledForm from "../styles/StyledForm";
 import Wrapper from "../styles/Wrapper";
 import StarRating from "./StarRating";
 import { UserContext } from "../context/User";
 import CustomButton from "../styles/Button";
 import styled from "styled-components";
-import { MovieContext } from "../context/Movie";
+import ErrorMessage from "../styles/ErrorMessage";
 
 function ReviewForm({ movie, updateMovie }) {
     const { user } = useContext(UserContext)
@@ -83,12 +83,6 @@ const ReviewButton = styled(CustomButton)`
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 2px;
-`
-
-const ErrorMessage = styled.p`
-    color: rgb(225, 0, 25);
-    font-size: 14.25px;
-    margin-bottom: 4px;
 `
 
 export default ReviewForm;

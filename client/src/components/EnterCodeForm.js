@@ -4,14 +4,17 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Alert } from "react-bootstrap";
 import { UserContext } from "../context/User";
 import CustomButton from "../styles/Button";
+import ErrorMessage from "../styles/ErrorMessage";
 
 function EnterCodeForm(props) {
-    const { setID, showAlert } = useContext(UserContext)
+    const { setID } = useContext(UserContext)
 
     const [code, setCode] = useState(null)
-    const [showError, setShowError] = useState(false)
+    const [error, setError] = useState(null)
 
-    function handleSubmit() {
+    function handleSubmit(e) {
+        e.preventDefault()
+
         fetch('/reset_password', {
             method: "POST",
             headers: {
@@ -20,12 +23,12 @@ function EnterCodeForm(props) {
             body: JSON.stringify(code)
         }).then((r) => {
             if(r.ok) {
-                r.json().then((ID) => { 
-                    setID(ID)
-                    props.onNextStep();
+                r.json().then((id) => {
+                    setID(id)
+                    props.onNextStep()
                 })
             } else {
-                setShowError(true)
+                r.json().then((err) => setError(err))
             }
         })
     }
@@ -44,11 +47,12 @@ function EnterCodeForm(props) {
                     name="code"
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
+                    isInvalid={!!error}
                     />
+                    <ErrorMessage>{error}</ErrorMessage>
                 </FloatingLabel>
                 <CustomButton variant="primary" type="submit">Submit</CustomButton>
             </StyledForm>
-            { showError ? <Alert variant="danger" onClose={() => setShowError(false)}>Sorry, we do not recognize that code</Alert> : "" }
         </>
                 
     )

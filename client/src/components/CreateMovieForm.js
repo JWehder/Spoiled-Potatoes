@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import StyledForm from "../styles/StyledForm";
-import { FloatingLabel, Form } from "react-bootstrap";
+import { FloatingLabel } from "react-bootstrap";
 import CustomButton from "../styles/Button";
 import Wrapper from "../styles/Wrapper";
 import { MovieContext } from "../context/Movie";

@@ -18,11 +18,6 @@ function MovieProvider({ children }) {
         })
     }, [])
 
-    // const drama = movies.filter((movie) => movie.determine_category === "Drama")
-    // const doc = movies.filter((movie) => movie.determine_category === "Documentary")
-    // const comedy = movies.filter((movie) => movie.determine_category === "Comedy")
-
-
     const displayCurrentMovies = currentMovies.map((movie) => {
         return <MovieCard id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
     })
@@ -34,7 +29,7 @@ function MovieProvider({ children }) {
     const displayErrors = (errors, errorKey = null) => {
         return errors.map((error) => {
             if (errorKey === "password" && error === "is invalid") {
-                error = "Sorry, your password is invalid. Your password must be at least 8 characters, contain at least one digit, at least one lowercase letter, one uppercase letter, and a special character (! @ # $ % ^ &)"
+                error = "Sorry, your password is invalid. Your password must contain at least one digit, at least one lowercase letter, one uppercase letter, and one special character (! @ # $ % ^ &)"
             } else if (errorKey === "email" && error === "is invalid") {
                 error = "Please follow typical email formatting: joe@email.com"
             }

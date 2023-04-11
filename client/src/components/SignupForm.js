@@ -2,7 +2,7 @@ import { React, useState, useContext } from "react";
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserContext } from "../context/User";
-import { Col, Row, FloatingLabel, Alert, Form } from "react-bootstrap";
+import { Col, Row, FloatingLabel } from "react-bootstrap";
 import { MovieContext } from "../context/Movie";
 
 function SignupForm({ setShowLogin }) {
@@ -10,7 +10,6 @@ function SignupForm({ setShowLogin }) {
 
     const [errors, setErrors] = useState();
     // const [isLoading, setIsLoading] = useState(false);
-    const [showErrors, setShowErrors] = useState(false)
     const { displayErrors } = useContext(MovieContext)
 
     const [userObject, setUserObject] = useState({
@@ -40,10 +39,7 @@ function SignupForm({ setShowLogin }) {
                     setShowLogin(true)
                 })
             } else {
-                r.json().then((err) => {
-                    setShowErrors(true)
-                    setErrors(err.errors)
-                })
+                r.json().then((err) => console.log(err.errors))
             }
         })
     }
