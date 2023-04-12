@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
 function SearchBar(props) {
-    const { setCurrentMovies, currentMovies } = useContext(MovieContext)
+    const { setCurrentMovies } = useContext(MovieContext)
 
     const [value, setValue] = useState("")
 

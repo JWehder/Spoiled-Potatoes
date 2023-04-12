@@ -4,11 +4,9 @@ import { UserContext } from "../context/User";
 import { withRouter } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import CustomButton from "../styles/Button";
-import { MovieContext } from "../context/Movie";
 
 function CreateNewPasswordForm(props) {
-    const { id } = useContext(UserContext)
-    const { displayErrors } = useContext(MovieContext)
+    const { id, displayErrors } = useContext(UserContext)
     const [password, setPassword] = useState("")
     const [password_confirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState()

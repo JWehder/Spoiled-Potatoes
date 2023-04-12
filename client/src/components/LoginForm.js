@@ -4,7 +4,7 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 
 import { UserContext } from "../context/User";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function LoginForm(props) {
     const { setUser, user } = useContext(UserContext);

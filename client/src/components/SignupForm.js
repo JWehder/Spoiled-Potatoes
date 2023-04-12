@@ -3,14 +3,13 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { UserContext } from "../context/User";
 import { Col, Row, FloatingLabel } from "react-bootstrap";
-import { MovieContext } from "../context/Movie";
 
 function SignupForm({ setShowLogin }) {
-    const { setUser } = useContext(UserContext)
+    const { setUser, displayErrors } = useContext(UserContext)
 
     const [errors, setErrors] = useState();
+
     // const [isLoading, setIsLoading] = useState(false);
-    const { displayErrors } = useContext(MovieContext)
 
     const [userObject, setUserObject] = useState({
         first_name: "",
@@ -39,7 +38,7 @@ function SignupForm({ setShowLogin }) {
                     setShowLogin(true)
                 })
             } else {
-                r.json().then((err) => console.log(err.errors))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }

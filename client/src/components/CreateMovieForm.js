@@ -4,9 +4,11 @@ import { FloatingLabel } from "react-bootstrap";
 import CustomButton from "../styles/Button";
 import Wrapper from "../styles/Wrapper";
 import { MovieContext } from "../context/Movie";
+import { UserContext } from "../context/User";
 
 function CreateMovieForm() {
-    const { setMovies, movies, displayErrors } = useContext(MovieContext)
+    const { setMovies, movies } = useContext(MovieContext)
+    const { displayErrors } = useContext(UserContext)
 
     const [errors, setErrors] = useState();
     const [movieObj, setMovieObj] = useState({
