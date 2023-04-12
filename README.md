@@ -1,17 +1,8 @@
-# Project Template: React/Rails API
+# Spoiled Potatoes React/ Ruby on Rails
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Render.
-
-**Note**: if you are not planning to deploy your app to Render and prefer to use
-SQLite, you will need to make the following changes in the project files:
-
-1. In the `Gemfile`, replace `gem 'pg', '~> 1.1'` with `gem 'sqlite3', '~>
-   1.4'`.
-2. In the `database.yml` file, change the line `adapter: postgresql` to
-   `adapter: sqlite3`.
+This project is a mock Rotten Tomatoes web application that allows the user to rate and review a movie. 
 
 ## Requirements
 
@@ -43,14 +34,6 @@ files on GitHub will cause issues.
 
 [create repo]: https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line#adding-a-project-to-github-without-github-cli
 
-If you're working with a partner,
-[add them as a collaborator][add collaborator] on GitHub. From your repo on
-GitHub, go to Settings > Manage Access > Invite a collaborator and enter your
-partner's username. Once your partner has access, they should git **clone** (not
-fork) the repository.
-
-[add collaborator]: https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository
-
 Finally, connect the GitHub remote repository to your local repository and push
 up your code:
 
@@ -72,43 +55,6 @@ You can use the following commands to run the application:
 - `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
 - `npm start --prefix client`: run the frontend on
   [http://localhost:4000](http://localhost:4000)
-
-Make sure to also update this README to include documentation about
-your project. Here's a list of some [awesome readmes][] for inspiration.
-
-[awesome readmes]: https://github.com/matiassingers/awesome-readme
-
-## Deploying
-
-This application has all the starter code needed to help you deploy your
-application to Render. It's recommended to deploy your project early and push up
-changes often to ensure that your code works equally well in production and
-development environments.
-
-The instructions in this section assume that you've already set up a Render
-account, created a PostgreSQL instance in your account, and set up your
-environment to deploy to Render. If you have not yet completed these steps, see
-the Environment Setup section below.
-
-### Create a Master Key File
-
-In the project files, delete the `config/credentials.yml.enc` file. Then, in the
-terminal, run the following:
-
-```sh
-$ EDITOR="code --wait" bin/rails credentials:edit
-```
-
-**Note**: if you use a different text editor than VS Code, you will need to replace
-`code` with the appropriate command.
-
-The command above will open a file in VS Code and wait for you to close it
-before completing the process of creating the credential files. Once you've done
-that, you should see both the `credentials.yml.enc` and `master.key` files in
-the `config` folder. You will need the value in the `master.key` file to set up
-the web service in Render.
-
-Commit your changes and push them to GitHub.
 
 ### Create the App Database
 
