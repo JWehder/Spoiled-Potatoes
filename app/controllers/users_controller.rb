@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
     def reset_password
         user = User.find_by(code: params[:code])
-        if user
+        if (user && params[:code] != null)
             render json: user.id, status: :ok
         else
             render json: { errors: "could not find a user with that code" }, status: :unauthorized
