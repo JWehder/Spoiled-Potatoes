@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/login">
               <LoginPage />
             </Route>
-            <Route exact path="/forgot_password">
+            <Route path="/forgot_password">
               <ForgotPasswordPage />
             </Route>
           </Switch>

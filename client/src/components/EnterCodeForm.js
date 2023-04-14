@@ -5,15 +5,17 @@ import { Alert } from "react-bootstrap";
 import { UserContext } from "../context/User";
 import CustomButton from "../styles/Button";
 import ErrorMessage from "../styles/ErrorMessage";
+import { withRouter } from "react-router-dom";
 
 function EnterCodeForm(props) {
-    const { setID, user } = useContext(UserContext)
+    const { setUser, user } = useContext(UserContext)
 
-    const [code, setCode] = useState(null)
-    const [error, setError] = useState(null)
+    const [code, setCode] = useState("")
+    const [error, setError] = useState()
 
     function handleSubmit(e) {
         e.preventDefault()
+        console.log(user)
 
         fetch('/reset_password', {
             method: "POST",
@@ -24,11 +26,12 @@ function EnterCodeForm(props) {
         }).then((r) => {
             if(r.ok) {
                 r.json().then((id) => {
-                    setID(id)
-                    props.onNextStep()
+                    setUser({...user, id: id})
+                    props.history.push("/forgot_password/create_password")
+                    // props.onNextStep()
                 })
             } else {
-                r.json().then((err) => setError(err.errors))
+                r.json().then((err) => setError(err))
             }
         })
     }
@@ -58,4 +61,4 @@ function EnterCodeForm(props) {
     )
 }
 
-export default EnterCodeForm;
+export default withRouter(EnterCodeForm);

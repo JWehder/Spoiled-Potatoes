@@ -112,10 +112,10 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => 'domain',
+    :address              => '',
     :port                 => 587,
-    :user_name            => 'your@email.com',
-    :password             => 'yourpassword',
+    :user_name            => '',
+    :password             => '',
     :authentication       => 'plain',
     :enable_starttls_auto => true  
   }

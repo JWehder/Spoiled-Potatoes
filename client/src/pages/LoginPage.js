@@ -5,7 +5,7 @@ import CustomButton from "../styles/Button";
 import SignupForm from "../components/SignupForm";
 import { Button } from "react-bootstrap";
 import Wrapper from "../styles/Wrapper";
-import { Link } from "react-router-dom"
+import { Link, Route } from "react-router-dom"
 
 function LoginPage() {
     const [showLogin, setShowLogin] = useState(true)
@@ -16,7 +16,7 @@ function LoginPage() {
                 <>
                 <LoginForm />
                 <ButtonContainer>
-                <Button variant="link"><Link to="/forgot_password">Forgot password?</Link></Button>
+                <Button variant="link"><Link to="/forgot_password/enter_email">Forgot password?</Link></Button>
                 </ButtonContainer>
                 <hr />
                 <ButtonContainer>
@@ -25,16 +25,16 @@ function LoginPage() {
                 </ButtonContainer>
                 </>
             )
-                :
+            :
             (
                 <>
                 <SignupForm setShowLogin={setShowLogin}/>
                 <hr />
                 <p>Already have an account?</p>
-                <CustomButton variant="secondary" onClick={() => setShowLogin(true)}>Sign In</CustomButton>
+                <CustomButton onClick={() => setShowLogin(true)}variant="secondary">Sign In</CustomButton>
                 </>
-            
             )}
+
         </Wrapper>
     )
 }

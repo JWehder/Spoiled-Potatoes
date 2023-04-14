@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user 
             PasswordResetMailer.password_reset(user).deliver_now
-            render json: { email: params[:email] }, status: :ok 
+            render json: { status: "All good" }, status: :ok 
         else
             render json: { errors: "Email not found" }, status: :not_found
         end
@@ -24,15 +24,14 @@ class UsersController < ApplicationController
 
     def reset_password
         user = User.find_by(email: params[:email])
-        puts user.code
         if params[:code].nil?
-            render json: { errors: "could not find a user with that code" }, status: :unauthorized
+            render json: user.code, status: :unauthorized
         else
             correct_code = user.code == params[:code]
             if correct_code
                 render json: user.id, status: :ok
             else
-                render json: { errors: "could not find a user with that code" }, status: :unauthorized
+                render json: user.code, status: :unauthorized
             end
         end
     end
@@ -44,7 +43,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :bio, :favorite_movie)
+        params.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :bio, :favorite_movie, :code, :request_time)
     end
 
     def render_unprocessable_entity(invalid)

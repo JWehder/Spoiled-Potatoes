@@ -7,7 +7,7 @@ import { UserContext } from "../context/User";
 import { Redirect } from "react-router-dom";
 
 function LoginForm(props) {
-    const { setUser, user } = useContext(UserContext);
+    const { setUser, user, setLoggedIn } = useContext(UserContext);
 
     const [loginUser, setLoginUser] = useState({
         username: "",
@@ -35,6 +35,7 @@ function LoginForm(props) {
             if (r.ok) {
                 r.json().then((user) => {
                     setUser(user)
+                    setLoggedIn(true)
                 })
             } else {
                 r.json().then((err) => setError(err.errors[0]))

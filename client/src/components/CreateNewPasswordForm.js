@@ -6,17 +6,15 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import CustomButton from "../styles/Button";
 
 function CreateNewPasswordForm(props) {
-    const { id, displayErrors } = useContext(UserContext)
+    const { user, displayErrors } = useContext(UserContext)
     const [password, setPassword] = useState("")
     const [password_confirmation, setPasswordConfirmation] = useState("")
     const [errors, setErrors] = useState()
 
-    console.log(id)
-
     function handleSubmit(e) {
         e.preventDefault()
 
-        fetch(`/users/${id}`, {
+        fetch(`/users/${user.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"

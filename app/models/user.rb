@@ -13,6 +13,5 @@ class User < ApplicationRecord
     validates :password_confirmation, presence: true
     validates :favorite_movie, presence: true
     validates :bio, presence: true, length: { minimum: 50 }
-    validates :code, presence: true, length: { minimum: 4 }
 
 end

@@ -9,7 +9,7 @@ import MovieCard from "../components/MovieCard";
 
 function HomePage() {
 
-    const { user } = useContext(UserContext)
+    const { loggedIn} = useContext(UserContext)
     const { isLoading, movies } = useContext(MovieContext)
 
     const categories = {popular: [], drama: [], comedy: [], documentary: []}
@@ -42,7 +42,7 @@ function HomePage() {
           );
     })
 
-    if (!user.id && !user.username) return <Redirect to="/login" />
+    if (!loggedIn) return <Redirect to="/login" />
 
     if (isLoading) {
         return <div style={{textAlign: 'center'}}>Loading...</div>

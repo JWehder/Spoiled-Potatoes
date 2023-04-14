@@ -3,6 +3,7 @@ import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
 import { Form, FloatingLabel } from "react-bootstrap";
 import { UserContext } from "../context/User";
+import { withRouter } from "react-router-dom";
 
 function ResetPasswordForm(props) {
     const { setUser } = useContext(UserContext)
@@ -21,9 +22,10 @@ function ResetPasswordForm(props) {
             body: JSON.stringify({email: email})
         }).then((r) => {
             if(r.ok) {
-                r.json().then((email) => {
-                    setUser(email)
-                    props.onNextStep()
+                r.json().then(() => {
+                    setUser({email: email})
+                    props.history.push("/forgot_password/enter_code")
+                    // props.onNextStep()
             })
             } else {
                 r.json().then((err) => setError(err.errors))
@@ -57,4 +59,4 @@ function ResetPasswordForm(props) {
     )
 }
 
-export default ResetPasswordForm;
+export default withRouter(ResetPasswordForm);
