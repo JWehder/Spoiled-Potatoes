@@ -16,18 +16,24 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user 
             PasswordResetMailer.password_reset(user).deliver_now
-            render json: { message: "Email sent" }, status: :ok 
+            render json: { email: params[:email] }, status: :ok 
         else
             render json: { errors: "Email not found" }, status: :not_found
         end
     end
 
     def reset_password
-        user = User.find_by(code: params[:code])
-        if (user && params[:code] != null)
-            render json: user.id, status: :ok
-        else
+        user = User.find_by(email: params[:email])
+        puts user.code
+        if params[:code].nil?
             render json: { errors: "could not find a user with that code" }, status: :unauthorized
+        else
+            correct_code = user.code == params[:code]
+            if correct_code
+                render json: user.id, status: :ok
+            else
+                render json: { errors: "could not find a user with that code" }, status: :unauthorized
+            end
         end
     end
 

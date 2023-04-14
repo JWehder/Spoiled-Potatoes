@@ -7,7 +7,7 @@ import CustomButton from "../styles/Button";
 import ErrorMessage from "../styles/ErrorMessage";
 
 function EnterCodeForm(props) {
-    const { setID } = useContext(UserContext)
+    const { setID, user } = useContext(UserContext)
 
     const [code, setCode] = useState(null)
     const [error, setError] = useState(null)
@@ -20,7 +20,7 @@ function EnterCodeForm(props) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(code)
+            body: JSON.stringify({code: code, email: user.email})
         }).then((r) => {
             if(r.ok) {
                 r.json().then((id) => {
@@ -28,7 +28,7 @@ function EnterCodeForm(props) {
                     props.onNextStep()
                 })
             } else {
-                r.json().then((err) => setError(err))
+                r.json().then((err) => setError(err.errors))
             }
         })
     }

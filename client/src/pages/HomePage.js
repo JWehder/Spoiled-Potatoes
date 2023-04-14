@@ -28,15 +28,6 @@ function HomePage() {
             } 
         })
     }
-    // <MovieCard overall_rating= {movie.overall_rating} id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
-
-    console.log(typeof categories["drama"])
-    //     return [
-    //         {name: 'drama', movies: categories.drama},
-    //         {name: 'comedy', movies: categories.comedy},
-    //         {name: 'doc', movies: categories.doc}
-    //     ];
-    // }
 
     const categoryContainers = Object.keys(categories).map((category) => {
           const movies = categories[category];
@@ -51,10 +42,7 @@ function HomePage() {
           );
     })
 
-    console.log(categoryContainers)
-
-
-    if (!user) return <Redirect to="/login" />
+    if (!user.id && !user.username) return <Redirect to="/login" />
 
     if (isLoading) {
         return <div style={{textAlign: 'center'}}>Loading...</div>

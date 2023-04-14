@@ -191,6 +191,14 @@ troubleshoot:
 
 [postgres downloads page]: https://postgresapp.com/downloads.html
 
+## Implementing an SMTP Server to send emails
+
+Travel to the config directory, then the environments, and within both the development and production files you will need to enter in the information for an email service that allows you to utilize your account as an SMTP server. 
+
+Zoho mail worked for me. 
+
+[Zoho Mail SMTP Setup Page]: (https://www.zoho.com/mail/help/zoho-smtp.html)
+
 ## Usage
 
 In order to see a working form of my application as well as how to use it, I created a [YouTube Video!]()
