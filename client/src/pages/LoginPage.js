@@ -10,18 +10,22 @@ import { Link, Route } from "react-router-dom"
 function LoginPage() {
     const [showLogin, setShowLogin] = useState(true)
 
+    function handleToggleLogin() {
+        setShowLogin(!showLogin)
+    }
+
     return (
         <Wrapper>
             {showLogin ? (
                 <>
                 <LoginForm />
                 <ButtonContainer>
-                <Button variant="link"><Link to="/forgot_password/enter_email">Forgot password?</Link></Button>
+                <Button style={{paddingLeft: "3px"}} variant="link"><Link to="/forgot_password/enter_email">Forgot password?</Link></Button>
                 </ButtonContainer>
                 <hr />
                 <ButtonContainer>
                 <p>Don't have an account?</p>
-                <CustomButton variant= "secondary" onClick={() => setShowLogin(false)}>Sign Up</CustomButton>
+                <CustomButton variant= "secondary" onClick={handleToggleLogin}>Sign Up</CustomButton>
                 </ButtonContainer>
                 </>
             )
@@ -31,7 +35,7 @@ function LoginPage() {
                 <SignupForm setShowLogin={setShowLogin}/>
                 <hr />
                 <p>Already have an account?</p>
-                <CustomButton onClick={() => setShowLogin(true)}variant="secondary">Sign In</CustomButton>
+                <CustomButton onClick={handleToggleLogin}variant="secondary">Sign In</CustomButton>
                 </>
             )}
 

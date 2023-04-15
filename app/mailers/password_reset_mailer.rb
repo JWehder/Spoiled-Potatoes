@@ -12,7 +12,6 @@ class PasswordResetMailer < ApplicationMailer
         # update the column in the DB for the user's password reset
         code = SecureRandom.hex(6)
 
-        byebug
         @user.update_columns(code: code, request_time: Time.now.utc)
 
         code

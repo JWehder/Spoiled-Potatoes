@@ -35,7 +35,7 @@ function ForgotPasswordPage(props) {
               <CreateNewPasswordForm />
             </Route>
             <hr />
-            <Button variant="link"><Nav.Link href="/login">Remember Password?</Nav.Link></Button>
+            <Button variant="link"><Link to="/login">Remember Password?</Link></Button>
         </Wrapper>
     )
 }

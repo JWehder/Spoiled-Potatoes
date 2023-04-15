@@ -43,7 +43,7 @@ function LoginForm(props) {
         })
     }
 
-    if (user) return <Redirect to='/' />
+    if (user && user.username && user.password) return <Redirect to='/' />
 
     return (
             <StyledForm onSubmit={handleSubmit}>
