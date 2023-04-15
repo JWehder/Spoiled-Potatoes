@@ -193,7 +193,9 @@ troubleshoot:
 
 ## Implementing an SMTP Server to send emails
 
-Travel to the config directory, then the environments, and within both the development and production files you will need to enter in the information for an email service that allows you to utilize your account as an SMTP server. 
+Travel to the config directory, then the environments, and within both the development and production files you will need to enter in your login information for an email service that allows you to utilize your account as an SMTP server. 
+
+If you would like to use mine, send me an email at jake.wehder@gmail.com.
 
 Zoho mail worked for me. 
 
@@ -211,6 +213,7 @@ For any major changes or questions, please feel free to reach out to me directly
 
 - [styled components](https://styled-components.com/)
 - [React Bootstrap](https://react-bootstrap.github.io/)
+- [Rails Guides Mailers](https://guides.rubyonrails.org/action_mailer_basics.html)
 
 ## License 
 
