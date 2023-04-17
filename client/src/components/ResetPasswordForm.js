@@ -24,8 +24,8 @@ function ResetPasswordForm(props) {
             if(r.ok) {
                 r.json().then(() => {
                     setUser({email: email})
-                    props.history.push("/forgot_password/enter_code")
-                    // props.onNextStep()
+                    // props.history.push("/forgot_password/enter_code")
+                    props.onNextStep()
             })
             } else {
                 r.json().then((err) => setError(err.errors))

@@ -27,8 +27,8 @@ function EnterCodeForm(props) {
             if(r.ok) {
                 r.json().then((id) => {
                     setUser({...user, id: id})
-                    props.history.push("/forgot_password/create_password")
-                    // props.onNextStep()
+                    // props.history.push("/forgot_password/create_password")
+                    props.onNextStep()
                 })
             } else {
                 r.json().then((err) => setError(err))
