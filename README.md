@@ -19,26 +19,8 @@ Start by **cloning** (not forking) the project template repository and removing
 the remote:
 
 ```console
-$ git clone git@github.com:learn-co-curriculum/project-template-react-rails-api.git your-project-name
-$ cd your-project-name
-$ git remote rm origin
-```
-
-Then, [create a new remote repository][create repo] on GitHub. Head to
-[github.com](https://github.com) and click the **+** icon in the top-right
-corner and follow the steps to create a new repository. **Important**: don't
-check any of the options such as 'Add a README file', 'Add a .gitignore file',
-etc. — since you're importing an existing repository, creating any of those
-files on GitHub will cause issues.
-
-[create repo]: https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line#adding-a-project-to-github-without-github-cli
-
-Finally, connect the GitHub remote repository to your local repository and push
-up your code:
-
-```console
-$ git remote add origin git@github.com:your-username/your-project-name.git
-$ git push -u origin main
+$ git clone https://github.com/JWehder/phase-4-project.git
+$ cd phase-4-project
 ```
 
 You can use the following commands to run the application:
@@ -58,7 +40,7 @@ Verify which version of Ruby you're running by entering this in the terminal:
 $ ruby -v
 ```
 
-We recommend version 2.7.4. If you need to upgrade you can install it using rvm:
+I recommend version 2.7.4. If you need to upgrade you can install it using rvm:
 
 ```console
 $ rvm install 2.7.4 --default
@@ -71,7 +53,7 @@ $ gem install bundler
 $ gem install rails
 ```
 
-Another common
+I also use styled-components to add personal styling to my react components from the same file. You can install it by running the below code. There's also more information about this library in the resources section below.
 
 ```console
 $ npm install styled-components
@@ -193,11 +175,11 @@ troubleshoot:
 
 ## Implementing an SMTP Server to send emails
 
-Travel to the config directory, then the environments, and within both the development and production files you will need to enter in your login information for an email service that allows you to utilize your account as an SMTP server. 
+Travel to the config directory, then the environments, and within both the development and production files you will need to enter in your login credentials for an email service that allows you to utilize your account as an SMTP server. I have provided the proper layout for entering your information within the aforementioned files. 
 
-If you would like to use mine, send me an email at jake.wehder@gmail.com.
+If you would like to use mine, send me an email at jake.wehder@gmail.com and I can provide you with my credentials.
 
-Zoho mail worked for me. 
+Zoho mail is the email service that I used. 
 
 [Zoho Mail SMTP Setup Page]: (https://www.zoho.com/mail/help/zoho-smtp.html)
 
