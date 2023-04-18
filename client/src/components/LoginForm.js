@@ -2,12 +2,11 @@ import React, { useContext, useState } from "react";
 import { FloatingLabel, Form } from 'react-bootstrap';
 import StyledForm from "../styles/StyledForm";
 import CustomButton from "../styles/Button";
-
 import { UserContext } from "../context/User";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 function LoginForm(props) {
-    const { setUser, user, setLoggedIn } = useContext(UserContext);
+    const { setUser, setLoggedIn } = useContext(UserContext);
 
     const [loginUser, setLoginUser] = useState({
         username: "",
@@ -36,14 +35,13 @@ function LoginForm(props) {
                 r.json().then((user) => {
                     setUser(user)
                     setLoggedIn(true)
+                    props.history.push("/")
                 })
             } else {
                 r.json().then((err) => setError(err.errors[0]))
             }
         })
     }
-
-    if (user && user.username && user.password) return <Redirect to='/' />
 
     return (
             <StyledForm onSubmit={handleSubmit}>
@@ -64,12 +62,13 @@ function LoginForm(props) {
                 <FloatingLabel controlId="floatingPassword" label="Password">
                 <StyledForm.Control 
                 type="password" 
-                placeholder="Password" 
+                placeholder="Password"
                 name="password"
                 value={loginUser.passwowrd}
                 onChange={(e) => onChange(e)}
                 isInvalid={!!error}
                 />
+                
                 {error && 
                 <Form.Control.Feedback type="invalid">
                 {error}
@@ -81,4 +80,4 @@ function LoginForm(props) {
     )
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

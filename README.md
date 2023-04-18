@@ -191,6 +191,8 @@ In order to see a working form of my application as well as how to use it, I cre
 
 For any major changes or questions, please feel free to reach out to me directly via email at jake.wehder@gmail.com.
 
+Reach out to me on [LinkedIn!](https://www.linkedin.com/in/jake-wehder/) 
+
 ## Resources
 
 - [styled components](https://styled-components.com/)

@@ -18,7 +18,7 @@ function MovieProvider({ children }) {
     }, [])
 
     const displayCurrentMovies = currentMovies.map((movie) => {
-        return <MovieCard id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
+        return <MovieCard overall_rating={movie.overall_rating} id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
     })
 
     function updateMovie(updatedMovie) {

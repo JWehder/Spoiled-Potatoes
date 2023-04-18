@@ -3,8 +3,8 @@ import Wrapper from "../styles/Wrapper";
 import ResetPasswordForm from "../components/ResetPasswordForm";
 import EnterCodeForm from "../components/EnterCodeForm";
 import CreateNewPasswordForm from "../components/CreateNewPasswordForm";
-import { Button, Nav } from "react-bootstrap"
-import { Link, withRouter, Route } from "react-router-dom"
+import { Button } from "react-bootstrap"
+import { Link, withRouter } from "react-router-dom"
 
 function ForgotPasswordPage(props) {
     const [step, setStep] = useState(1);

@@ -6,11 +6,16 @@ import MovieInfo from "../components/MovieInfo";
 import styled from "styled-components";
 import { UserContext } from "../context/User";
 import CreateMovieForm from "../components/CreateMovieForm";
+import MovieCard from "../components/MovieCard";
 
 function MoviesPage() {
-    const { displayMovies, movies, displayCurrentMovies, currentMovies } = useContext(MovieContext)
+    const { movies, displayCurrentMovies, currentMovies } = useContext(MovieContext)
     const { user } = useContext(UserContext)
     const match = useRouteMatch();
+
+    const displayMovies = movies.map((movie) => {
+        return <MovieCard overall_rating={movie.overall_rating} id={movie.id} title={movie.title} poster={movie.poster} key={movie.title} />
+    })
 
     if (!user) return <Redirect to="/login" />
     

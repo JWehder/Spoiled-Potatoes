@@ -29,7 +29,11 @@ function ReviewForm({ movie, updateMovie }) {
             body: JSON.stringify(reviewObj)
         }).then((r) => {
             if (r.ok) {
-                r.json().then((updatedMovie) => updateMovie(updatedMovie))
+                r.json().then((updatedMovie) => {
+                    updateMovie(updatedMovie)
+                    setComment("")
+                    setRating(0)
+                })
             } else {
                 r.json().then((err) => {
                     setErrors(err.errors)
