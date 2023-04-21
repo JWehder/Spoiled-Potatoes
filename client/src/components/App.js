@@ -7,7 +7,6 @@ import MoviesPage from "../pages/MoviesPage";
 import CreateMovieForm from "./CreateMovieForm";
 
 function App() {
-  console.log("in app")
 
   return (
       <div className="App" style={{ backgroundColor: '#F5F5F5' }}>

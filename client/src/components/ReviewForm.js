@@ -9,7 +9,7 @@ import styled from "styled-components";
 import ErrorMessage from "../styles/ErrorMessage";
 
 function ReviewForm({ movie, updateMovie }) {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     // const { displayErrors } = useContext(MovieContext)
     const [comment, setComment] = useState("");
     const [rating, setRating] = useState(0)
@@ -28,9 +28,9 @@ function ReviewForm({ movie, updateMovie }) {
             body: JSON.stringify(reviewObj)
         }).then((r) => {
             if (r.ok) {
-                r.json().then((updatedMovie) => {
-                    updateMovie(updatedMovie)
-                    console.log(updatedMovie.reviews)
+                r.json().then((data) => {
+                    updateMovie(data[0])
+                    setUser(data[1])
                     setComment("")
                     setRating(0)
                 })                              
