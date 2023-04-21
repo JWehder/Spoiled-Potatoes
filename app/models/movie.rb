@@ -11,6 +11,10 @@ class Movie < ApplicationRecord
         end
     end
 
+    def overall_rating_hash
+        { overall_rating: self.overall_rating }
+    end
+
     def determine_category
         category = self.genre.find { |genre| genre == "Comedy" || genre == "Documentary" || genre == "Drama" }
         category

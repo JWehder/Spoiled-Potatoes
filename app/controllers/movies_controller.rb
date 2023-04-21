@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    skip_before_action :authorize, only: [:index, :show, :search]
 
     def index
         movies = Movie.all
@@ -17,7 +18,7 @@ class MoviesController < ApplicationController
     end
 
     def search
-        results = Movie.where("title LIKE ?", "%#{params[:q]}%")
+        results = Movie.where("LOWER(title) LIKE ?", "%#{params[:q]}%")
         render json: results
     end
 
@@ -25,10 +26,6 @@ class MoviesController < ApplicationController
 
     def render_not_found_response
         render json: { error: "Movie not found" }, status: :not_found
-    end
-
-    def render_unprocessable_entity(invalid)
-        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
 
     def movie_params

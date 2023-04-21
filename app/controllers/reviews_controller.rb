@@ -1,10 +1,9 @@
 class ReviewsController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def create
         user = User.find_by(id: params[:user_id])
         review = user.reviews.create!(review_params)
-        render json: review.movie, status: :created
+        render json: {movie: review.movie, user: user}, status: :created
     end
 
     def update
@@ -21,10 +20,6 @@ class ReviewsController < ApplicationController
     end
 
     private
-
-    def render_unprocessable_entity(invalid)
-        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
-    end
 
     def review_params
         params.permit(:rating, :comment, :movie_id, :user_id)

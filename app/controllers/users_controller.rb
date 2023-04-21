@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+    skip_before_action :authorize, only: [:create, :forgot_password, :reset_password]
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response 
 
     def create
         user = User.create!(user_params)
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
         else
             correct_code = user.code == params[:code]
             if correct_code
+                session[:user_id] = user.id
                 render json: user.id, status: :ok
             else
                 render json: user.code, status: :unauthorized
@@ -44,10 +46,6 @@ class UsersController < ApplicationController
 
     def user_params
         params.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :bio, :favorite_movie, :code, :request_time)
-    end
-
-    def render_unprocessable_entity(invalid)
-        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
 
 end

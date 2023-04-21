@@ -3,9 +3,7 @@ import styled from "styled-components";
 
 function DataContent({ movie }) {
 
-    const displayGenres = genres => {
-        return genres.join(", ")
-    }
+    const displayGenres = movie.genre.join(', ')
 
     return (
         <DataContainer>

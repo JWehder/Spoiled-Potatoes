@@ -8,7 +8,7 @@ function MovieCard({ overall_rating, id, title, poster }) {
             <MovieContainer>
                 <LinkStyle to={`/movies/${id}`}>
                 <MovieButton>
-                        <StyledImg src={poster} alt={poster}></StyledImg>
+                        <StyledImg src={poster} alt={poster} />
                 </MovieButton>
                 <div style={{ paddingLeft: '10px'}}>
                     <MovieContent>

@@ -16,7 +16,7 @@ function LoginPage() {
         setShowLogin(!showLogin)
     }
 
-    if (user && user.username && user.password) return <Redirect to='/' />
+    if (user) return <Redirect to='/' />
 
     return (
         <Wrapper>

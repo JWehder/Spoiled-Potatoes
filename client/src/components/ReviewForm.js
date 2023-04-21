@@ -17,9 +17,8 @@ function ReviewForm({ movie, updateMovie }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(user)
 
-        const reviewObj = {rating: rating, comment: comment, movie_id: movie.id, user_id: user.id}
+        const reviewObj = {rating: rating, comment: comment, movie_id: movie.id, user_id: user.id}                                   
 
         fetch('/reviews', {
             method: "POST",
@@ -31,9 +30,10 @@ function ReviewForm({ movie, updateMovie }) {
             if (r.ok) {
                 r.json().then((updatedMovie) => {
                     updateMovie(updatedMovie)
+                    console.log(updatedMovie.reviews)
                     setComment("")
                     setRating(0)
-                })
+                })                              
             } else {
                 r.json().then((err) => {
                     setErrors(err.errors)
@@ -53,7 +53,7 @@ function ReviewForm({ movie, updateMovie }) {
     }
 
     return (
-        <Wrapper style={{ padding: "14px"}}>
+        <Wrapper style={{ padding: "14px"}} onClick={() => console.log("I have been clicked!")}>
             <div style={{ display: "flex", justifyContent:"space-between"}}>
                 <StarRating rating= {rating} setRating={setRating} />
                 <p style={{ marginLeft: "50px" }}>{user ? user.username : "user"}</p>
