@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def create
         user = User.find_by(id: params[:user_id])
@@ -20,6 +21,9 @@ class ReviewsController < ApplicationController
     end
 
     private
+
+    def render_not_found_response
+        render json: { error: "not found" }, status: :not_found
 
     def review_params
         params.permit(:rating, :comment, :movie_id, :user_id)

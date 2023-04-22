@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     skip_before_action :authorize, only: [:create]
+    rescue_from ActiveRecord::RecordNotFound, with: render_not_found_response
 
     def create
         user = User.find_by(username: params[:username])
@@ -27,6 +28,10 @@ class SessionsController < ApplicationController
     end
 
     private
+
+    def render_not_found_response
+        render json: { error: "User not found" }, status: :not_found
+    end
 
     def find_user
         user = User.find_by(id: session[:user_id])
