@@ -45,6 +45,6 @@ module ReactRailsApiProjectTemplate
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.action_mailer.default_url_options = { host: 'gmail.com' }
+    config.action_mailer.default_url_options = { host: 'zohomail.com' }
   end
 end

@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create, :update, :destroy]
   get "/search", to: "movies#search"
   post "/signup", to: "users#create"
-  get "/me", to: "users#show"
-  get "/user", to: "sessions#show"
+  get "/user", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   post "/forgot_password", to: "users#forgot_password"

@@ -23,7 +23,8 @@ class ReviewsController < ApplicationController
     private
 
     def render_not_found_response
-        render json: { error: "not found" }, status: :not_found
+        render json: { error: "Review not found" }, status: :not_found
+    end
 
     def review_params
         params.permit(:rating, :comment, :movie_id, :user_id)

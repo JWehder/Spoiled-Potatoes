@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     skip_before_action :authorize, only: [:create]
-    rescue_from ActiveRecord::RecordNotFound, with: render_not_found_response
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def create
         user = User.find_by(username: params[:username])
@@ -10,11 +10,6 @@ class SessionsController < ApplicationController
         else
             render json: { errors: ["Username or Password is incorrect"]}, status: :unauthorized
         end
-    end
-
-    def show
-        user = find_user
-        render json: user, methods: [:unique_movies], status: :ok
     end
 
     def destroy

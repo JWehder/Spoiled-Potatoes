@@ -15,6 +15,16 @@ class Movie < ApplicationRecord
         { overall_rating: self.overall_rating }
     end
 
+    def self.top_movies
+        # grab all movies from the movie model
+        movies = Movie.all.sort_by { |movie| -movie.count}
+        [movies[0].reviews, movies[1].reviews, movies[2].reviews]
+    end
+
+    def count 
+        self.reviews.count
+    end
+
     def determine_category
         category = self.genre.find { |genre| genre == "Comedy" || genre == "Documentary" || genre == "Drama" }
         category

@@ -10,7 +10,6 @@ import ErrorMessage from "../styles/ErrorMessage";
 
 function ReviewForm({ movie, updateMovie }) {
     const { user, setUser } = useContext(UserContext)
-    // const { displayErrors } = useContext(MovieContext)
     const [comment, setComment] = useState("");
     const [rating, setRating] = useState(0)
     const [errors, setErrors] = useState()
@@ -33,6 +32,7 @@ function ReviewForm({ movie, updateMovie }) {
                     setUser(data[1])
                     setComment("")
                     setRating(0)
+                    setErrors()
                 })                              
             } else {
                 r.json().then((err) => {
