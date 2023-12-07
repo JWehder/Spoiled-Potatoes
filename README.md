@@ -185,7 +185,7 @@ Zoho mail is the email service that I used.
 
 ## Usage
 
-In order to see a working form of my application as well as how to use it, I created a [YouTube Video!](https://youtu.be/663LK_NGLY4)
+
 
 ## Contributing and Support
 
